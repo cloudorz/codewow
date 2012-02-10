@@ -17,7 +17,7 @@ db = MongoAlchemy()
 # actions
 def create_app(config=None, app_name=None, modules=None):
 
-  if app_name is None:
+    if app_name is None:
         app_name = DEFAULT_APP_NAME
 
     if modules is None:
