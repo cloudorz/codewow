@@ -1,1 +1,14 @@
 codewow startup now
+
+installation
+
+1. 
+pip install ...
+flask
+flask-mongoalchemy
+flask-principal
+flask-wtf
+flask-openid
+flask-script
+flask-babel
+blinker
