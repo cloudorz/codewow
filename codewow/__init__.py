@@ -1,18 +1,21 @@
 # coding: utf-8
 
 from flask import Flask
+from flask import g, session, request
 
-from flaskext.principal import Principal, RoleNeed, UserNeed, identity_loaded
+from flaskext.principal import Principal, identity_loaded
 from flaskext.babel import Babel, gettext as _
 
 from codewow import views
 from codewow.ext import db, oid
+from codewow.models import User
 
 # configure
 DEFAULT_APP_NAME = 'codewow'
 
 DEFAULT_MODULES = (
     ("", views.home),
+    ("", views.account),
 )
 
 # actions
@@ -33,6 +36,8 @@ def create_app(config=None, app_name=None, modules=None):
     configure_extensions(app)
     configure_i18n(app)
     configure_identity(app)
+    configure_ba_handlers(app)
+    configure_errorhandlers(app)
 
     return app
 
@@ -61,12 +66,15 @@ def configure_identity(app):
 
     @identity_loaded.connect_via(app)
     def on_identity_loaded(sender, identity):
-        g.user = None # TODO user here
+        g.user = User.query.from_identity(identity)
 
-def configure_before_handlers(app):
+def configure_ba_handlers(app):
 
     @app.before_request
-    def authenticate():
+    def lookup_current_user():
         g.user = None
         if 'openid' in session:
-            g.user = None
+            g.user = User.query.filter_by(openid=session['openid']).first()
+
+def configure_errorhandlers(app):
+   pass 

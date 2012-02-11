@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% from "macros/_forms.html" import render_errors %}
+{% block title %}Edit Profile{% endblock %}
+{% block content %}
+  <h2 class="title">Edit Profile</h2>
+    <div id="sign">
+    <form method="post" >
+        {{ form.hidden_tag() }}
+        <table cellspacing="0" class="form-table">
+        <tbody>
+            <tr>
+                <th>{{ form.blog.label }}</th>
+                <td>{{ form.blog(size=30) }} {{ render_errors(form.blog) }}</td>
+            </tr>
+            <tr>
+                <th>{{ form.github.label }}</th>
+                <td>{{ form.github(size=30) }} {{ render_errors(form.github) }}</td>
+            </tr>
+            <tr>
+                <th>{{ form.brief.label }}</th>
+                <td>{{ form.brief() }} {{ render_errors(form.brief) }}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>{{ form.submit }}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>{{ form.delete }}</td>
+            </tr>
+        </tbody>
+        </table>
+    </form>
+</div>
+{% endblock %}
