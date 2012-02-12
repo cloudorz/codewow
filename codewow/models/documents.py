@@ -113,6 +113,9 @@ class Gist(db.Document):
     def permissions(self):
         return self.Permissions(self)
 
+    def can_save():
+        return self.author and self.desc and self.code_type and content
+
 
 class Reply(db.Document):
 
