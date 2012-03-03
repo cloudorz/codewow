@@ -1,0 +1,20 @@
+{% macro paginate(page_obj, page_url) %}
+{% if page_obj.pages > 1 %}
+<div class="pageNav">
+    <span>{{ _("Total") }}{{ page_obj.pages }}</span>
+        {% if page_obj.has_prev() %}
+        <a href="{{ page_url(page_obj.page - 1) }}">{{ _("Previous") }}</a>
+        {% endif %}
+        {% for n in page_obj.pages|intrange %}
+        {% if n == page_obj.page %}
+        <span class="current">{{ n }}</span>
+        {% else %}
+        <a href="{{ page_url(n) }}">{{ n }}</a>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next() %}
+        <a href="{{ page_url(page_obj.page + 1) }}">{{ _("Next") }}</a>
+        {% endif %}
+</div>
+{% endif %}
+{% endmacro %}

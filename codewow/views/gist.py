@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from flask import g, Module, request, flash, abort, redirect, url_for, session, render_template, \
-                    jsonify, make_response
+                    jsonify
 from flaskext.babel import gettext as _
 
 from codewow.permissions import normal
@@ -11,55 +11,80 @@ from codewow.utils.mail import sendmail
 
 gist = Module(__name__)
 
-@gist.route("/<gist_id>/detail", methods=('GET',))
+@gist.route("/<gist_id>/", methods=('GET',))
 def detail_gist(gist_id): 
-    #gist = Gist.query.get_or_404(gist_id)
-    # do other things TODO
+    gist = Gist.query.get_or_404(gist_id)
+    replies = Reply.query.filter_by(gist=gist).descending(Reply.mongo_id)
 
-    #return render_template("gist/detail.html", gist=gist)
-    return render_template("gist/detail.html")
+    return render_template("gist/detail.html",
+            gist=gist,
+            replies=replies,
+            )
+
 
 @gist.route("/", methods=('GET', 'POST'))
 @normal.require(401)
+def create_gist():
+    form = GistForm()
 
+    if form.validate_on_submit():
 
-@gist.route("/<gist_id>", methods=('POST', 'UPDATE', 'DELETE'))
-@gist.route("/", methods=('GET',))
-@normal.require(401)
-def gist_resource(gist_id=None):
-    if request.method == 'GET':
-        return render_template("gist/create_gist.html")
-    elif request.method == 'POST':
-        gist = Gist()
-        gist.from_dict(request.json_data)
-        gist.author = g.user
+        gist = Gist(author=g.user)
+        form.populate_obj(gist)
         gist.maybe_save()
 
-        rsp = make_response(jsonify(msg=_("Created Success")), 201)
-        rsp.headers['Location'] = gist.uri
+        flash(_("Post gist success"), "success")
+
+        return redirect(url_for("detail_gist", gist_id=gist.pk))
+
+    return render_template("gist/create_gist.html",
+            form=form)
+
+
+@gist.route("/<gist_id>/edit", methods=('GET', 'POST'))
+@normal.require(401)
+def edit_gist(gist_id):
+    gist = Gist.query.get_or_404(gist_id)
+    gist.permissions.edit.test(403)
+    
+    form = GistForm(
+            desc=gist.desc,
+            code_type=gist.code_type,
+            content=gist.content,
+            tags=' '.join(gist.tags),
+            )
+
+    if form.validate_on_submit():
         
-    elif request.method == 'UPDATE':
-        gist = Gist.query.get_or_404(gist_id)
-        gist.permissions.edit.test(403)
-        gist.from_dict(request.json_data)
-        gist.mayby_save()
-
-        rsp = make_response(jsonify(msg=_("Updated Success")), 200)
+        form.populate_obj(gist)
+        gist.maybe_save()
         
-    else:
-        gist = Gist.query.get_or_404(gist_id)
-        gist.permissions.delete.test(403)
-        gist.remove()
-
-        if g.user.id != gist.author_id:
-            body = render_template("emails/gist_deleted.html",
-                                   gist=gist)
-
-            sendmail(subject=_("Your gist has been deleted"),
-                    body=body,
-                    tos=[gist.author.email])
-
-        rsp = make_response(jsonify(msg=_("Deleted Success")), 200)
+        flash(_("Gist has been changed"), "success")
         
-    return rsp
+        return redirect(url_for("detail_gist", gist_id=gist.pk))
 
+    return render_template("gist/create_gist.html", form=form)
+
+
+@gist.route("/<gist_id>/edit", methods=('GET',))
+@normal.require(401)
+def del_gist(gist_id):
+    # TODO wait for test
+
+    gist = Gist.query.get_or_404(gist_id)
+    gist.permissions.delete.test(403)
+    gist.remove()
+
+    # maybe send mail
+    if g.user.pk != gist.author.pk:
+        body = render_template("emails/gist_deleted.html",
+                       gist=gist)
+
+        sendmail(subject=_("Your gist has been deleted"),
+                body=body,
+                tos=[gist.author.email])
+
+    flash(_("The post has been deleted"), "success")
+
+    # FIXME the redirect url maybe some change
+    return jsonify(success=True, redirect_url=url_for('home.index'))

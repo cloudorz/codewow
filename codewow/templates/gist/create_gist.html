@@ -1,31 +1,31 @@
 {% extends "layout.html" %}
+{% from "macros/_forms.html" import render_errors %}
 {% block content %}
 <div id="content">
     <div class="rSection">
     </div>
     <div class="lSection">
-        <form class="shareCode">
+        <form method="POST" class="shareCode">
+            {{ form.hidden_tag() }}
             <div>
-                <label>类型</label>
-                <select>
-                    <option>c++</option>
-                    <option>object C</option>
-                    <option>python</option>
-                    <option>java</option>
-                    <option>java script</option>
-                </select>
+                {{ form.code_type.label }}
+                {{ form.code_type }}
+                {{ render_errors(form.desc) }}
             </div>
             <div>
-                <label>简介</label>
-                <textarea></textarea>
+                {{ form.desc.label }}
+                {{ form.desc }}
+                {{ render_errors(form.desc) }}
             </div>
             <div>
-                <label>代码</label>
-                <textarea></textarea>
+                {{ form.content.label }}
+                {{ form.content }}
+                {{ render_errors(form.content) }}
             </div>
             <div>
-                <label>标签</label>
-                <input class="tagInput" type="text">
+                {{ form.tags.label }}
+                {{ form.tags(class="tagInput") }}
+                {{ render_errors(form.tags) }}
             </div>
             <div>
                 <div class="myTagCloud">
@@ -42,7 +42,7 @@
             </div>
             <div>
                 <label></label>
-                <input type="submit" class="codeSubmit" value="share my code">
+                {{ form.submit(class="codeSubmit") }}
             </div>
         </form>
     </div>	

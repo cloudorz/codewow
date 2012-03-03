@@ -1,6 +1,6 @@
 # coding: utf-8
 
-import datetime
+import datetime, re
 
 from flask import g, request, abort, url_for, session
 from werkzeug import cached_property
@@ -86,6 +86,11 @@ class User(db.Document):
     def is_admin(self):
         return self.role >= self.ADMIN
 
+    @cached_property
+    def avatar_url(self):
+        # TODO full url
+        return self.avatar
+
     def __str__(self):
         return "<%s>" % str(self.mongo_id)
 
@@ -103,7 +108,7 @@ class Gist(db.Document):
     eggs = db.ListField(required=False, item_type=db.ObjectIdField(), max_capacity=20480) # FIXME maybe large 
     flowers = db.ListField(required=False, item_type=db.ObjectIdField(), max_capacity=20480) # FIXME maybe large 
     followers = db.ListField(required=False, item_type=db.ObjectIdField(), max_capacity=10240) # FIXME maybe large 
-    tags = db.SetField(required=False, item_type=db.StringField(), max_capacity=16)
+    _tags = db.SetField(required=False, item_type=db.StringField(), max_capacity=8)
 
     @db.computed_field(db.DateTimeField())
     def updated(self):
@@ -157,6 +162,25 @@ class Gist(db.Document):
     @cached_property
     def uri(self):
         return url_for("gist.gist_resource", gist_id=self.pk)
+
+    def __str__(self):
+        return "<%s>" % str(self.mongo_id)
+
+    def __repr__(self):
+        return "<%s>" % str(self.mongo_id)
+
+    def _get_tags(self):
+        return self._tags
+
+    def _set_tags(self, tags):
+        if isinstance(tags, set):
+            self._tags = tags
+        elif isinstance(tags, basestring):
+            self._tags = set(e for e in re.split('\s+', tags) if e)
+        else:
+            self._tags = set()
+
+    tags = property(_get_tags, _set_tags)
 
 
 class Reply(db.Document):
@@ -214,6 +238,12 @@ class Reply(db.Document):
     def uri(self):
         return url_for("reply.reply_resource", gist_id=self.pk)
 
+    def __str__(self):
+        return "<%s>" % str(self.mongo_id)
+
+    def __repr__(self):
+        return "<%s>" % str(self.mongo_id)
+
 
 class Stat(db.Document):
 
@@ -224,3 +254,9 @@ class Stat(db.Document):
     @cached_property
     def pk(self):
         return str(self.mongo_id)
+
+    def __str__(self):
+        return "<%s>" % str(self.mongo_id)
+
+    def __repr__(self):
+        return "<%s>" % str(self.mongo_id)

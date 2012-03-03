@@ -1,139 +1,34 @@
 {% extends "layout.html" %}
+{% from "macros/_page.html" import paginate %}
 {% block content %}
 <div id="content">
-        {% include "gist/_card.html" %}
-        <div class="lSection">
-            <div class="articleList">
-                <div class="listCell">
-                    <div class="avatar">
-                        <a href="profile.html">
-                            <img src="{{ url_for('.static', filename='css/img/avatar2.png') }}">
-                        </a>
-                    </div>
-                    <div>
-                        <h1><a href="{{ url_for('gist.detail_gist', gist_id=2) }}">如果是热爱旅游的iOS程序员来"去哪儿"吧</a></h1>
-                        <div class="tagCloud1">
-                            <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="rank single">
-                            <a href="#"><span>顶</span>20</a>
-                            <a href="#"><span>踩</span>30</a>
-                        </div>
+    {% include "gist/_card.html" %}
+    <div class="lSection">
+        <div class="articleList">
+            {% for gist in page_obj.items %}
+            <div class="listCell">
+                <div class="avatar">
+                    <a href="profile.html">
+                        <img src="{{ gist.author.avatar_url or gist.author.email|gravatar(50) }}">
+                    </a>
+                </div>
+                <div>
+                    <h1><a href="{{ url_for('gist.detail_gist', gist_id=gist.pk) }}">{{ gist.desc }}</a></h1>
+                    <div class="tagCloud1">
+                        {% for tag in gist.tags  %}
+                        <a href="#">{{ tag }}</a>
+                        {% endfor %}
                     </div>
                 </div>
-                <div class="listCell">
-                    <div class="avatar">
-                        <a href="profile.html">
-                            <img src="{{ url_for('.static', filename='css/img/avatar2.png') }}">
-                        </a>
-                    </div>
-                    <div>
-                        <h1><a href="detail.html">如果是热爱旅游的iOS程序员来"去哪儿"吧</a></h1>
-                        <div class="tagCloud1">
-                            <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="rank single">
-                            <a href="#"><span>顶</span>20</a>
-                            <a href="#"><span>踩</span>30</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="listCell">
-                    <div class="avatar">
-                        <a href="profile.html">
-                            <img src="{{ url_for('.static', filename='css/img/avatar2.png') }}">
-                        </a>
-                    </div>
-                    <div>
-                        <h1><a href="detail.html">如果是热爱旅游的iOS程序员来"去哪儿"吧</a></h1>
-                        <div class="tagCloud1">
-                            <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="rank single">
-                            <a href="#"><span>顶</span>20</a>
-                            <a href="#"><span>踩</span>30</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="listCell">
-                    <div class="avatar">
-                        <a href="profile.html">
-                            <img src="{{ url_for('.static', filename='css/img/avatar2.png') }}">
-                        </a>
-                    </div>
-                    <div>
-                        <h1><a href="detail.html">如果是热爱旅游的iOS程序员来"去哪儿"吧</a></h1>
-                        <div class="tagCloud1">
-                            <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="rank single">
-                            <a href="#"><span>顶</span>20</a>
-                            <a href="#"><span>踩</span>30</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="listCell">
-                    <div class="avatar">
-                        <a href="profile.html">
-                            <img src="{{ url_for('.static', filename='css/img/avatar2.png') }}">
-                        </a>
-                    </div>
-                    <div>
-                        <h1>
-                            <a href="detail.html">如果是热爱旅游的iOS程序员来"去哪儿"吧</a>
-                        </h1>
-                        <div class="tagCloud1">
-                            <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="rank single">
-                            <a href="#"><span>顶</span>20</a>
-                            <a href="#"><span>踩</span>30</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="listCell">
-                    <div class="avatar">
-                        <a href="profile.html">
-                            <img src="{{ url_for('.static', filename='css/img/avatar2.png') }}">
-                        </a>
-                    </div>
-                    <div>
-                        <h1><a href="detail.html">如果是热爱旅游的iOS程序员就来"去哪儿"吧</a></h1>
-                        <div class="tagCloud1">
-                            <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="rank single">
-                            <a href="#"><span>顶</span>20</a>
-                            <a href="#"><span>踩</span>30</a>
-                        </div>
+                <div>
+                    <div class="rank single">
+                        <a href="#"><span>顶</span>20</a>
+                        <a href="#"><span>踩</span>30</a>
                     </div>
                 </div>
             </div>
-
-            <div class="pageNav">
-                <span>共5页</span>
-                    <a href="#">前页</a>
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <span class="current">3</span>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">后页</a>
-            </div>
-
+            {% endfor %}
+            {{ paginate(page_obj, page_url) }}
         </div>
-            
-    </div>
+</div>
 {% endblock %}

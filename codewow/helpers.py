@@ -1,6 +1,6 @@
 # coding: utf-8
 
-import re
+import re, hashlib
 
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
@@ -150,6 +150,10 @@ def endtags(html):
     return html
 
 
+def intrange(value):
+    return range(1, 1+value)
+
+
 def code_highlight(value):
     f_list = _pre_re.findall(value)
 
@@ -171,7 +175,7 @@ def code_highlight(value):
 
 def code2html(code, lang):
     lexer = get_lexer_by_name(lang, stripall=True)
-    formatter = HtmlFormatter()
+    formatter = HtmlFormatter(linenos=True, cssclass="syntax")
     return highlight(code, lexer, formatter)
 
 

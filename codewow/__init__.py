@@ -161,3 +161,11 @@ def configure_template_filters(app):
     def gistcode(html):
         return helpers.gistcode(html)
 
+    @app.template_filter()
+    def intrange(value):
+        return helpers.intrange(value)
+
+    @app.template_filter()
+    def code2html(code, lang):
+        return helpers.code2html(code, lang)
+
