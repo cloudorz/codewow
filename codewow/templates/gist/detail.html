@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="content">
+{% include "gist/_card.html" %}
+        <div class="lSection">
+            <div class="articleHeader">
+                <div class="avatar">
+                    <a href="#"><img src="{{ url_for('.static', filename='css/img/avatar2.png') }}"></a>
+                </div>
+                <div class="userID"><a href="#">龙大要理发</a></div>
+                <a class="follow" href="#"><span></span>follow</a>
+            </div>
+            <div class="hr"></div>
+            <div class="articleBody">
+                <div class="codeBody">
+                    <p>
+                        在豆瓣，我很少很感性。摩羯座是害羞的，不善于表达自己的情感，所以造就了我们这个特殊的群体。以前在Qzone写了很多很多感性的文章，原来在我的内心，是喜欢没有逻辑、单纯的意识的流动。翻开Qzone的文章，整个大学的回忆就涌现在眼前。
+        
+                        工作之后，我反而很少写这样充满艺术家特质的文章了，少了多愁善感，给人感觉是冷静的理性的。我很怀念以前，一个人走在大学城体育馆通向中心湖的小路，无论春天、夏天、秋天、冬天，敏感的我总能感觉到大自然的脉搏，即使广州不是一个季节明显的城市。春天的中心湖的农田上会有很多油菜花，还有淡淡的花香，夏天，湖边会有荷花绽放，秋天也有落叶，冬天也有光秃秃的树枝。
+
+                        我承认，我喜欢独处，大学的时候没钱，没有买单反之类的东西，只有普通的卡片机，就这样，我记录了湖的春夏秋冬，农民的喜怒哀乐，树的生死枯荣。这都是我一个人完成的，以前晚自修到晚上11点，一个人走在空荡荡回宿舍的路上，就在不远处会有喧闹的杂市，同学们都在那里吃宵夜。什么感觉呢？就是我一直都是喜欢冷静的人，表面上我是一个比较和善的人，但是内心总是喜欢和人保持距离，喜欢旁观。
+
+                        那一年，我们班成为了2007级最受欢迎的班，因为我们拍摄的短片拿到了很多奖。在大家相拥而泣的时候，我却很冷静。 那次我很辛苦，我是负责做flash和绘声绘影后期制作的人，我并没有出现在镜头前的人，但是我却觉的很舒服。
+                    </p>
+                </div>
+                <div>
+                    <div class="rankArea">
+                        <div>
+                            <a class="btnUp" href="#">赞一个</a>
+                            <p>26</p>
+                        </div>
+                        <div>
+                            <a class="btnDown" href="#">踩一脚</a>
+                            <p>9</p>
+                        </div>
+                    </div>
+                    <div class="tagCloud1">
+                        <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a>
+                    </div>
+                </div>
+            </div>
+            <div class="commentList">
+                <div class="commentCell">
+                    <div class="avatar">
+                        <a href="#"><img src="{{ url_for('.static', filename='css/img/avatar1.png') }}"></a>
+                    </div>
+                    <div>
+                        <a href="#">轻轻河边操</a>
+                        <p>年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀</p>
+                        <span>2012-3-10</span>
+                    </div>
+                    <div class="reply"><a href="#"></a></div>
+                </div>
+                <div class="commentCell">
+                    <div class="avatar">
+                        <a href="#"><img src="{{ url_for('.static', filename='css/img/avatar1.png') }}"></a>
+                    </div>
+                    <div>
+                        <a href="#">轻轻河边操</a>
+                        <p>年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀</p>
+                        <span>2012-3-10</span>
+                    </div>
+                    <div class="delete"><a href="#"></a></div>
+                </div>
+                <div class="pageNav">
+                    <span>共5页</span>
+                    <a href="#">前页</a>
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <span class="current">3</span>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">后页</a>
+                </div>
+            </div>
+            <div>
+                <form class="commentBox">
+                    <textarea></textarea>
+                    <input type="submit" value="发表">
+                </form>
+            </div>
+
+        </div>
+            
+</div>
+{% endblock content %}

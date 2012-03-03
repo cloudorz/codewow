@@ -1,12 +1,11 @@
 # coding: utf-8
 
-from flask import Flask
-from flask import g, session, request, redirect, url_for, jsonfiy
+from flask import Flask, g, session, request, redirect, url_for, jsonify, render_template, flash
 
 from flaskext.principal import Principal, identity_loaded
-from flaskext.babel import Babel, gettext as _
+from flaskext.babel import Babel, gettext as _ # P.S: use gettext, not lazy_gettext or cookies bug
 
-from codewow import views
+from codewow import views, helpers
 from codewow.ext import db, oid
 from codewow.models import User
 from codewow.utils.escape import json_encode, json_decode
@@ -41,6 +40,7 @@ def create_app(config=None, app_name=None, modules=None):
     configure_identity(app)
     configure_ba_handlers(app)
     configure_errorhandlers(app)
+    configure_template_filters(app)
 
     return app
 
@@ -95,6 +95,7 @@ def configure_ba_handlers(app):
             else:
                 request.json_data = data
 
+
 def configure_errorhandlers(app):
     @app.errorhandler(401)
     def unauthorized(error):
@@ -124,3 +125,39 @@ def configure_errorhandlers(app):
     @app.errorhandler(415)
     def json_decode_error(error):
         return jsonfiy(error=_('Json format error'))
+
+    @app.errorhandler(400)
+    def json_decode_error(error):
+        return jsonfiy(error=_('args error'))
+
+
+def configure_template_filters(app):
+    
+    @app.template_filter()
+    def timesince(value):
+        return helpers.timesince(value)
+
+    @app.template_filter()
+    def endtags(value):
+        return helpers.endtags(value)
+
+    @app.template_filter()
+    def gravatar(email,size):
+        return helpers.gravatar(email,size)
+
+    @app.template_filter()
+    def format_date(date,s='full'):
+        return helpers.format_date(date,s)
+
+    @app.template_filter()
+    def format_datetime(time,s='full'):
+        return helpers.format_datetime(time,s)
+
+    @app.template_filter()
+    def code_highlight(html):
+        return helpers.code_highlight(html)
+
+    @app.template_filter()
+    def gistcode(html):
+        return helpers.gistcode(html)
+

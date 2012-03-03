@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="content">
+    <div class="rSection">
+    </div>
+    <div class="lSection">
+        <form class="shareCode">
+            <div>
+                <label>类型</label>
+                <select>
+                    <option>c++</option>
+                    <option>object C</option>
+                    <option>python</option>
+                    <option>java</option>
+                    <option>java script</option>
+                </select>
+            </div>
+            <div>
+                <label>简介</label>
+                <textarea></textarea>
+            </div>
+            <div>
+                <label>代码</label>
+                <textarea></textarea>
+            </div>
+            <div>
+                <label>标签</label>
+                <input class="tagInput" type="text">
+            </div>
+            <div>
+                <div class="myTagCloud">
+                    <div><span>python</span><a href="#"></a></div>
+                    <div><span>大并发</span><a href="#"></a></div>
+                    <div><span>明明很高兴</span><a href="#"></a></div>
+                    <div><span>python</span><a href="#"></a></div>
+                    <div><span>大并发</span><a href="#"></a></div>
+                    <div><span>明明很高兴</span><a href="#"></a></div>
+                    <div><span>python</span><a href="#"></a></div>
+                    <div><span>大并发</span><a href="#"></a></div>
+                    <div><span>明明很高兴</span><a href="#"></a></div>
+                </div>
+            </div>
+            <div>
+                <label></label>
+                <input type="submit" class="codeSubmit" value="share my code">
+            </div>
+        </form>
+    </div>	
+</div>
+{% endblock %}

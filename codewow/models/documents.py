@@ -2,9 +2,11 @@
 
 import datetime
 
+from flask import g, request, abort, url_for, session
 from werkzeug import cached_property
 from flaskext.principal import RoleNeed, UserNeed, Permission
 from flaskext.mongoalchemy import BaseQuery
+from mongoalchemy.exceptions import ExtraValueException
 
 from codewow.ext import db
 from codewow.permissions import admin, sa
@@ -50,11 +52,15 @@ class User(db.Document):
 
         @cached_property
         def edit(self):
-            return Permission(UserNeed(self.obj.mongo_id)) & sa
+            return Permission(UserNeed(self.obj.pk)) & sa
 
         @cached_property
         def delete(self):
-            return Permission(UserNeed(self.obj.mongo_id)) & sa
+            return Permission(UserNeed(self.obj.pk)) & sa
+
+    @cached_property
+    def pk(self):
+        return str(self.mongo_id)
 
     @cached_property
     def permissions(self):
@@ -62,7 +68,7 @@ class User(db.Document):
 
     @cached_property
     def provides(self):
-        needs = [RoleNeed('auth'), UserNeed(self.mongo_id)]
+        needs = [RoleNeed('auth'), UserNeed(self.pk)]
 
         if self.is_sa:
             needs.append(RoleNeed('super'))
@@ -79,6 +85,12 @@ class User(db.Document):
     @property
     def is_admin(self):
         return self.role >= self.ADMIN
+
+    def __str__(self):
+        return "<%s>" % str(self.mongo_id)
+
+    def __repr__(self):
+        return "<%s>" % str(self.mongo_id)
 
 
 class Gist(db.Document):
@@ -103,18 +115,48 @@ class Gist(db.Document):
 
         @cached_property
         def edit(self):
-            return Permission(UserNeed(self.obj.author.mongo_id))
+            return Permission(UserNeed(self.obj.author.pk))
 
         @cached_property
         def delete(self):
-            return Permission(UserNeed(self.obj.author.mongo_id)) & admin
+            return Permission(UserNeed(self.obj.author.pk)) & admin
 
     @cached_property
     def permissions(self):
         return self.Permissions(self)
 
-    def can_save():
-        return self.author and self.desc and self.code_type and content
+    @cached_property
+    def pk(self):
+        return str(self.mongo_id)
+
+    def maybe_save(self, safe=None):
+        try:
+            self.save()
+        except:
+            abort(400)
+
+    def from_dict(self, data):
+        cls = self.__class__
+        fields = self.get_fields()
+
+        for name, field in fields.iteriterms():
+            if self.partial and field.db_field not in self.retrieved_fields:
+                continue
+
+            if name in data:
+                getattr(cls, name).set_value(self, data[name], from_db=loading_from_db)
+                continue
+
+        for k in data:
+            if k not in fields:
+                if self.config_extra_fields == 'ignore':
+                    self.__extra_fields_orig[k] = data[k]
+                else:
+                    raise ExtraValueException(k)
+
+    @cached_property
+    def uri(self):
+        return url_for("gist.gist_resource", gist_id=self.pk)
 
 
 class Reply(db.Document):
@@ -129,15 +171,48 @@ class Reply(db.Document):
 
         @cached_property
         def edit(self):
-            return Permission(UserNeed(self.obj.author.mongo_id))
+            return Permission(UserNeed(self.obj.author.pk))
 
         @cached_property
         def delete(self):
-            return Permission(UserNeed(self.obj.author.mongo_id)) & admin
+            return Permission(UserNeed(self.obj.author.pk)) & admin
 
     @cached_property
     def permissions(self):
         return self.Permissions(self)
+
+    @cached_property
+    def pk(self):
+        return str(self.mongo_id)
+
+    def maybe_save(self, safe=None):
+        try:
+            self.save()
+        except:
+            abort(400)
+
+    def from_dict(self, data):
+        cls = self.__class__
+        fields = self.get_fields()
+
+        for name, field in fields.iteriterms():
+            if self.partial and field.db_field not in self.retrieved_fields:
+                continue
+
+            if name in data:
+                getattr(cls, name).set_value(self, data[name], from_db=loading_from_db)
+                continue
+
+        for k in data:
+            if k not in fields:
+                if self.config_extra_fields == 'ignore':
+                    self.__extra_fields_orig[k] = data[k]
+                else:
+                    raise ExtraValueException(k)
+
+    @cached_property
+    def uri(self):
+        return url_for("reply.reply_resource", gist_id=self.pk)
 
 
 class Stat(db.Document):
@@ -146,3 +221,6 @@ class Stat(db.Document):
     new_gist = db.IntField()
     new_user = db.IntField()
 
+    @cached_property
+    def pk(self):
+        return str(self.mongo_id)

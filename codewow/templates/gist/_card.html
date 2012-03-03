@@ -1,0 +1,32 @@
+<div class="rSection">
+    {% if g.user %}
+    <div class="rBackground">
+        <a class="btnShare" href="{{ url_for('gist.gist_resource') }}">{{ _("Share my code") }}</a>
+        <div class="hr"></div>
+        <div class="namecard">
+            <div class="avatarBox">
+                <div class="avatar">
+                    <a href="#"><img src="{{ url_for('.static', filename='css/img/avatar1.png') }}"></a>
+                </div>
+                <a class="username" href="#">{{ g.user.nickname }}</a>
+            </div>
+            <div class="sumBox">
+                <a class="shareCount" href="#">
+                    <p>200</p><p>share</p>
+                </a>
+                <a class="followCount" href="#">
+                    <p>2</p><p>follow</p>
+                </a>
+            </div>
+        </div>
+        <div class="tagCloud2">
+            <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a><a href="#">豆瓣API</a><a href="#">jQuery</a><a href="#">google app engine</a><a href="#">macbok pro</a>
+        </div>
+    </div>
+    {% else %}
+    <a class="btnShare" href="{{ url_for('gist.gist_resource') }}">{{ _("Share my code") }}</a>
+    <div class="tagCloud2">
+        <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a><a href="#">豆瓣API</a><a href="#">jQuery</a><a href="#">google app engine</a><a href="#">macbok pro</a>
+    </div>
+    {% endif %}
+</div>

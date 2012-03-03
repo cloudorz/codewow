@@ -1,6 +1,8 @@
 # coding: utf-8
 
-from flask import g, Module, request, flash, abort, redirect, url_for, session, render_template
+from flask import g, Module, request, flash, abort, redirect, url_for, session, render_template, current_app
+from flaskext.babel import gettext as _
+from flaskext.principal import identity_changed, Identity, AnonymousIdentity
 
 from codewow.ext import oid, COMMON_PROVIDERS
 from codewow.forms import SignupForm, UpdateProfileForm
@@ -31,8 +33,9 @@ def create_or_login(rsp):
 
     user = User.query.filter_by(openid=rsp.identity_url).first()
     if user is not None:
-        flash(_('Successfully signed in'))
-        g.user = user
+        flash(_('Successfully signed in'), 'success')
+        identity_changed.send(current_app._get_current_object(), identity=Identity(user.pk))
+        print Identity(user.pk).name
         return redirect(oid.get_next_url())
 
     return redirect(url_for('create_profile',
@@ -58,7 +61,7 @@ def create_profile():
 
         user.save()
 
-        flash(_('Profile successfully created'))
+        flash(_('Profile successfully created'), 'success')
 
         return redirect(oid.get_next_url())
 
@@ -83,7 +86,7 @@ def edit_profile():
             # TODO delete relational data
             g.user.remove()
             session.pop('openid', None)
-            flash(_('Profile deleted'))
+            flash(_('Profile deleted'), 'success')
 
             return redirect(url_for('home.index'))
 
@@ -99,5 +102,6 @@ def edit_profile():
 @account.route('/logout')
 def logout():
     session.pop('openid', None)
-    flash(_('You have been signed out'))
+    identity_changed.send(current_app._get_current_object(), identity=AnonymousIdentity())
+    flash(_('You have been signed out'), 'success')
     return redirect(oid.get_next_url())

@@ -6,3 +6,4 @@ env
 static/i
 *.patch
 *.swp
+data
