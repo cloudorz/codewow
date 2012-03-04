@@ -1,4 +1,8 @@
 {% extends "layout.html" %}
+{% from "macros/_forms.html" import render_errors %}
+{% from "macros/_page.html" import paginate %}
+{% block key %}{{ gist.keywords() }}{% endblock %}
+{% block desc %}{{ gist.description() }}{% endblock %}
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='css/pygments_styles.css') }}" >
 {% endblock %}
@@ -8,13 +12,20 @@
         <div class="lSection">
             <div class="articleHeader">
                 <div class="avatar">
-                    <a href="#"><img src="{{ gist.author.avatar_url or gist.author.email|gravatar(50) }}"></a>
+                    <a href="{{ url_for('gist.user_gists', uid=gist.author.pk) }}"><img src="{{ gist.author.avatar_url or gist.author.email|gravatar(50) }}"></a>
                 </div>
-                <div class="userID"><a href="#">{{ gist.author.nickname }}</a></div>
+                <div class="userID"><a href="{{ url_for('gist.user_gists', uid=gist.author.pk) }}">{{ gist.author.nickname }}</a></div>
+                {% if gist.permissions.delete.can() %}
+                <a class="del" href="{{ url_for('gist.del_gist', gist_id=gist.pk) }}"><span></span>{{_("delete")}}</a>
+                {% endif %}
                 {% if g.user.pk == gist.author.pk %}
-                <a class="follow" href="{{ url_for('gist.edit_gist', gist_id=gist.pk) }}"><span></span>edit</a>
+                <a class="edit" href="{{ url_for('gist.edit_gist', gist_id=gist.pk) }}"><span></span>{{ _("edit") }}</a>
                 {% else %}
-                <a class="follow" href="#"><span></span>follow</a>
+                    {% if g.user.mongo_id in gist.followers %}
+                    <a class="unfollow" href="{{ url_for('gist.follow_gist', gist_id=gist.pk) }}"><span></span>{{ _("unfollow") }}</a>
+                    {% else %}
+                    <a class="follow" href="{{ url_for('gist.follow_gist', gist_id=gist.pk) }}"><span></span>{{ _("follow") }}</a>
+                    {% endif %}
                 {% endif %}
             </div>
             <div class="hr"></div>
@@ -28,63 +39,51 @@
                 <div>
                     <div class="rankArea">
                         <div>
-                            <a class="btnUp" href="#">赞一个</a>
-                            <p>26</p>
+                            <a class="btnUp up" href="{{ url_for('gist.vote_gist', gist_id=gist.pk, op='up') }}" >赞一个</a>
+                            <p>{{ gist.flowers|length }}</p>
                         </div>
                         <div>
-                            <a class="btnDown" href="#">踩一脚</a>
-                            <p>9</p>
+                            <a class="btnDown down" href="{{ url_for('gist.vote_gist', gist_id=gist.pk, op='down') }}" >踩一脚</a>
+                            <p>{{ gist.eggs|length }}</p>
                         </div>
                     </div>
                     <div class="tagCloud1">
                         {% for tag in gist.tags %}
-                        <a href="#">{{ tag }}</a>
+                        <a href="{{ url_for('home.tag', tag=tag) }}">{{ tag }}</a>
                         {% endfor %}
                     </div>
                 </div>
             </div>
             <div class="commentList">
+                {% for r in page_obj.items %}
                 <div class="commentCell">
                     <div class="avatar">
-                        <a href="#"><img src="{{ url_for('.static', filename='css/img/avatar1.png') }}"></a>
+                        <a href="#"><img src="{{ r.author.avatar or r.author.email|gravatar(50) }}"></a>
                     </div>
                     <div>
-                        <a href="#">轻轻河边操</a>
-                        <p>年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀</p>
-                        <span>2012-3-10</span>
+                        <a href="#">{{ r.author.nickname }}</a>
+                        <p>{{ r.content|safe }}</p>
+                        <span>{{ r.created_time|format_datetime }}</span>
                     </div>
+                    {% if r.permissions.delete.can()  %}
+                    <div class="delete"><a href="{{ url_for("reply.del_reply", reply_id=r.pk) }}"></a></div>
+                    {% else %}
+                        {% if g.user %}
                     <div class="reply"><a href="#"></a></div>
+                        {% endif %}
+                    {% endif %}
                 </div>
-                <div class="commentCell">
-                    <div class="avatar">
-                        <a href="#"><img src="{{ url_for('.static', filename='css/img/avatar1.png') }}"></a>
-                    </div>
-                    <div>
-                        <a href="#">轻轻河边操</a>
-                        <p>年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀年纪轻轻就已经如此犀利了呀</p>
-                        <span>2012-3-10</span>
-                    </div>
-                    <div class="delete"><a href="#"></a></div>
-                </div>
-                <div class="pageNav">
-                    <span>共5页</span>
-                    <a href="#">前页</a>
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <span class="current">3</span>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">后页</a>
-                </div>
+                {% endfor %}
+                {{ paginate(page_obj, page_url) }}
             </div>
             <div>
-                <form class="commentBox">
-                    <textarea></textarea>
-                    <input type="submit" value="发表">
+                <form method="POST" class="commentBox">
+                    {{ form.hidden_tag() }}
+                    {{ form.content }}
+                    {{ render_errors(form.content) }}
+                    {{ form.submit() }}
                 </form>
             </div>
-
         </div>
-            
 </div>
 {% endblock content %}

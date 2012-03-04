@@ -3,37 +3,47 @@ $(document).ready(function(){
 	$(".rSection").height($("#content").innerHeight() - 20);
 	//comment hover
 	$(".commentCell").hover(function(){
-		$(this).children("div:last").show();
+		$(this).children(".commentCell .delete, .commentCell .reply").show();
 	},function(){
-		$(this).children("div:last").hide();
-	})
+		$(this).children(".commentCell .delete, .commentCell .reply").hide();
+	});
 	//comment reply&delete
-	$(".commentCell div:last-child").click(function(event){
-		event.preventDefault();
-		var userID = $(this).prev().children("a").text();
-		if($(this).hasClass("reply")){
-			$(".lSection .commentBox textarea").val("@" + userID + ":");
-		}else{
-			$(this).parent().remove();
-		}
-	})
+	$(".commentCell .reply").click(function(){
+		var nickname = $(this).prev().children("a").text();
+        var area = $(".lSection .commentBox textarea");
+        var old = area.val() 
+        area.val("@" + nickname + " " + old);
+        return false;
+	});
 
 	//btn follow&unfollow
-	$(".listCell>div:last-child>a, .articleHeader>a").click(function(event){
-		event.preventDefault;
-		if($(this).hasClass("unfollow")){
-			$(this).text("follow").append("<span></span>").attr("class","follow");
-		}else{
-			$(this).children().remove();
-			$(this).text("unfollow").attr("class","unfollow");
-		}
-	})
+	$(".follow, .unfollow").live('click', function(){
+        var cur = $(this);
+        var url = $(this).attr('href');
+        $.getJSON(url, function(data){
+            if (data.success){
+                if (data.op == 'follow'){
+                    cur.attr('class', 'unfollow').html("<span></span>unfollow")
+                } else{
+                    cur.attr('class', 'follow').html("<span></span>follow")
+                }
+                $(".rSection .followCount p:first").text(data.follow_num);
+            } else {
+                if (data.code == 401){
+                    window.location = "/login";
+                } else{
+                    alert(data.error);
+                }
+            }
+        });
+        return false;
+	});
 
 	//share page add/remove tags
-	$("form .myTagCloud a").live("click",function(event){
-		event.preventDefault;
+	$("form .myTagCloud a").live("click",function(){
 		$(this).parent().remove();
-	}) 
+        return false;
+	}); 
 
 
 	$("form .tagInput").keypress(function(event){
@@ -43,6 +53,45 @@ $(document).ready(function(){
 			newTag.append("<span>" + $(this).val() + "</span><a href='#'></a>");
 			myTags.append(newTag);
 		}
-	})
+	});
+
+    // up down gist 
+    $(function(){
+        $(".up").click(function(){
+            var cur = $(this);
+            var url = cur.attr('href');
+            $.getJSON(url, function(data){
+                if (data.success) {
+                    cur.next("p").text(data.up_num);
+                    cur.parent().next().find("p").text(data.down_num);
+                } else {
+                    if (data.code == 401){
+                        window.location = "/login";
+                    } else{
+                        alert(data.error);
+                    }
+                }
+            });
+            return false;
+        });
+
+        $(".down").click(function(){
+            var cur = $(this);
+            var url = cur.attr('href');
+            $.getJSON(url, function(data){
+                if (data.success){
+                    cur.next("p").text(data.down_num);
+                    cur.parent().prev().find("p").text(data.up_num);
+                } else{
+                    if (data.code == 401){
+                        window.location = "/login";
+                    } else{
+                        alert(data.error);
+                    }
+                }
+            });
+            return false;
+        });
+    });
 		
 })

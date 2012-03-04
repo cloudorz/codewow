@@ -6,16 +6,16 @@
         <div class="namecard">
             <div class="avatarBox">
                 <div class="avatar">
-                    <a href="#"><img src="{{ g.user.avatar_url or g.user.email|gravatar(50) }}"></a>
+                    <a href="{{ url_for('gist.user_gists', uid=g.user.pk) }}"><img src="{{ g.user.avatar_url or g.user.email|gravatar(50) }}"></a>
                 </div>
-                <a class="username" href="#">{{ g.user.nickname }}</a>
+                <a class="username" href="{{ url_for('gist.user_gists', uid=g.user.pk) }}">{{ g.user.nickname }}</a>
             </div>
             <div class="sumBox">
-                <a class="shareCount" href="#">
-                    <p>200</p><p>share</p>
+                <a class="shareCount" href="{{ url_for('gist.user_gists', uid=g.user.pk) }}">
+                    <p>{{ g.user.gist_num }}</p><p>{{ _("share") }}</p>
                 </a>
-                <a class="followCount" href="#">
-                    <p>2</p><p>follow</p>
+                <a class="followCount" href="{{ url_for('gist.followed_gists', uid=g.user.pk) }}">
+                    <p>{{ g.user.follows|length }}</p><p>{{ _("follow") }}</p>
                 </a>
             </div>
         </div>

@@ -35,7 +35,6 @@ def create_or_login(rsp):
     if user is not None:
         flash(_('Successfully signed in'), 'success')
         identity_changed.send(current_app._get_current_object(), identity=Identity(user.pk))
-        print Identity(user.pk).name
         return redirect(oid.get_next_url())
 
     return redirect(url_for('create_profile',
@@ -57,9 +56,11 @@ def create_profile():
 
     if form.validate_on_submit():
         user = User(openid=session['openid'])
+        user.init_optional()
         form.populate_obj(user)
 
         user.save()
+        identity_changed.send(current_app._get_current_object(), identity=Identity(user.pk))
 
         flash(_('Profile successfully created'), 'success')
 
@@ -76,9 +77,9 @@ def edit_profile():
 
     form = UpdateProfileForm(
             #email=g.user.email,
-            blog=getattr(g.user, 'blog', None),
-            github=getattr(g.user, 'github', None),
-            brief=getattr(g.user, 'brief', None),
+            blog=g.user.blog,
+            github=g.user.github,
+            brief=g.user.brief,
             )
 
     if form.validate_on_submit():

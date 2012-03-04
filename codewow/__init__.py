@@ -17,7 +17,7 @@ DEFAULT_MODULES = (
     ("", views.home),
     ("", views.account),
     ("/gist", views.gist),
-    ("/reply", views.gist),
+    ("/reply", views.reply),
 )
 
 # actions
@@ -100,7 +100,7 @@ def configure_errorhandlers(app):
     @app.errorhandler(401)
     def unauthorized(error):
         if request.is_xhr:
-            return jsonfiy(error=_("Login required"))
+            return jsonify(code=401, error=_("Login required"))
         flash(_("Please login to see this page"), "error")
         return redirect(url_for("account.login", next=request.path))
   
@@ -124,11 +124,11 @@ def configure_errorhandlers(app):
 
     @app.errorhandler(415)
     def json_decode_error(error):
-        return jsonfiy(error=_('Json format error'))
+        return jsonify(error=_('Json format error'))
 
     @app.errorhandler(400)
     def json_decode_error(error):
-        return jsonfiy(error=_('args error'))
+        return jsonify(error=_('args error'))
 
 
 def configure_template_filters(app):

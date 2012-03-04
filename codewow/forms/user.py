@@ -34,8 +34,8 @@ class UpdateProfileForm(Form):
     
     blog = TextField(_("Blog url"), validators=[optional()])
     github = TextField(_("Github url"), validators=[optional()])
-    brief = TextAreaField(_("Brief"), validators=[optional(), length(max=140,message=_("less than 140 characater"))])
-
+    brief = TextAreaField(_("Brief"), validators=[optional(),
+        length(max=140,message=_("Pls. less than 140 characater"))])
     next = HiddenField()
     submit = SubmitField(_("Update profile"))
     delete = SubmitField(_("Delete"))

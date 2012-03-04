@@ -8,7 +8,7 @@
             {% for gist in page_obj.items %}
             <div class="listCell">
                 <div class="avatar">
-                    <a href="profile.html">
+                    <a href="{{ url_for('gist.user_gists', uid=gist.author.pk) }}">
                         <img src="{{ gist.author.avatar_url or gist.author.email|gravatar(50) }}">
                     </a>
                 </div>
@@ -16,14 +16,14 @@
                     <h1><a href="{{ url_for('gist.detail_gist', gist_id=gist.pk) }}">{{ gist.desc }}</a></h1>
                     <div class="tagCloud1">
                         {% for tag in gist.tags  %}
-                        <a href="#">{{ tag }}</a>
+                        <a href="{{ url_for('home.tag', tag=tag) }}">{{ tag }}</a>
                         {% endfor %}
                     </div>
                 </div>
                 <div>
                     <div class="rank single">
-                        <a href="#"><span>顶</span>20</a>
-                        <a href="#"><span>踩</span>30</a>
+                        <a href="{{ url_for('gist.detail_gist', gist_id=gist.pk) }}"><span>顶</span>{{ gist.flowers|length }}</a>
+                        <a href="{{ url_for('gist.detail_gist', gist_id=gist.pk)}}"><span>踩</span>{{ gist.eggs|length }}</a>
                     </div>
                 </div>
             </div>

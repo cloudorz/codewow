@@ -1,161 +1,58 @@
 {% extends "layout.html" %}
+{% from "macros/_page.html" import paginate %}
 {% block content %}
 <div id="content">
     {% include "gist/_card.html" %}
     <div class="lSection">
         <div class="profileBox">
             <div class="avatar">
-                <a href="#"><img src="css/img/avatar3.png"></a>
+                <a href="{{ url_for('gist.user_gists', uid=user.pk) }}"><img src="{{ user.avatar_url or user.email|gravatar(50) }}"></a>
             </div>
             <div>
-                <a href="#">龙大要理发</a>
+                <a href="{{ url_for('gist.user_gists', uid=user.pk) }}">{{ user.nickname }}</a>
             </div>
             <div class="sumBox">
-                <a class="shareCount" href="#">
-                    <p>200</p><p>share</p>
+                <a class="shareCount" href="{{ url_for('gist.user_gists', uid=user.pk) }}">
+                    <p>{{ user.gist_num }}</p><p>{{ _("share") }}</p>
                 </a>
-                <a class="followCount" href="#">
-                    <p>2</p><p>follow</p>
+                <a class="followCount" href="{{ url_for('gist.followed_gists', uid=user.pk) }}">
+                    <p>{{ user.follows|length }}</p><p>{{ _("follow") }}</p>
                 </a>
             </div>
         </div>
         <div class="hr"></div>
         <div class="articleList">
+            {% for gist in page_obj.items %}
             <div class="listCell">
                 <div class="avatar">
-                    <a href="profile.html">
-                        <img src="css/img/avatar2.png">
+                    <a href="{{ url_for('gist.user_gists', uid=gist.author.pk) }}">
+                        <img src="{{ gist.author.avatar_url or gist.author.email|gravatar(50) }}">
                     </a>
                 </div>
                 <div>
-                    <h1><a href="detail.html">如果是热爱旅游的iOS程序员来"去哪儿"吧</a></h1>
+                    <h1><a href="{{ url_for('gist.detail_gist', gist_id=gist.pk) }}">{{ gist.desc }}</a></h1>
                     <div class="tagCloud1">
-                        <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
+                        {% for tag in gist.tags %}
+                        <a href="{{ url_for('home.tag', tag=tag) }}">{{ tag }}</a>
+                        {% endfor %}
                     </div>
                 </div>
                 <div>
                     <div class="rank">
-                        <a href="#"><span>顶</span>20</a>
-                        <a href="#"><span>踩</span>30</a>
+                        <a href="{{ url_for('gist.detail_gist', gist_id=gist.pk) }}"><span>顶</span>{{ gist.flowers|length }}</a>
+                        <a href="{{ url_for('gist.detail_gist', gist_id=gist.pk) }}"><span>踩</span>{{ gist.eggs|length }}</a>
                     </div>
-                    <a class="unfollow" href="#"><span></span>unfollow</a>
+                    {% if g.user.pk != user.pk %}
+                    {% if g.user.mongo_id in gist.followers %}
+                    <a class="unfollow" href="{{ url_for('gist.follow_gist', gist_id=gist.pk) }}"><span></span>{{ _("unfollow") }}</a>
+                    {% else %}
+                    <a class="follow" href="{{ url_for('gist.follow_gist', gist_id=gist.pk) }}"><span></span>{{ _("follow") }}</a>
+                    {% endif %}
+                    {% endif %}
                 </div>
             </div>
-            <div class="listCell">
-                <div class="avatar">
-                    <a href="profile.html">
-                        <img src="css/img/avatar2.png">
-                    </a>
-                </div>
-                <div>
-                    <h1><a href="detail.html">如果是热爱旅游的iOS程序员来"去哪儿"吧</a></h1>
-                    <div class="tagCloud1">
-                        <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="rank">
-                        <a href="#"><span>顶</span>20</a>
-                        <a href="#"><span>踩</span>30</a>
-                    </div>
-                    <a class="follow" href="#"><span></span>follow</a>
-                </div>
-            </div>
-            <div class="listCell">
-                <div class="avatar">
-                    <a href="profile.html">
-                        <img src="css/img/avatar2.png">
-                    </a>
-                </div>
-                <div>
-                    <h1><a href="detail.html">如果是热爱旅游的iOS程序员来"去哪儿"吧</a></h1>
-                    <div class="tagCloud1">
-                        <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="rank">
-                        <a href="#"><span>顶</span>20</a>
-                        <a href="#"><span>踩</span>30</a>
-                    </div>
-                    <a class="follow" href="#"><span></span>follow</a>
-                </div>
-            </div>
-            <div class="listCell">
-                <div class="avatar">
-                    <a href="profile.html">
-                        <img src="css/img/avatar2.png">
-                    </a>
-                </div>
-                <div>
-                    <h1><a href="detail.html">如果是热爱旅游的iOS程序员来"去哪儿"吧</a></h1>
-                    <div class="tagCloud1">
-                        <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="rank">
-                        <a href="#"><span>顶</span>20</a>
-                        <a href="#"><span>踩</span>30</a>
-                    </div>
-                    <a class="follow" href="#"><span></span>follow</a>
-                </div>
-            </div>
-            <div class="listCell">
-                <div class="avatar">
-                    <a href="profile.html">
-                        <img src="css/img/avatar2.png">
-                    </a>
-                </div>
-                <div>
-                    <h1>
-                        <a href="detail.html">如果是热爱旅游的iOS程序员来"去哪儿"吧</a>
-                    </h1>
-                    <div class="tagCloud1">
-                        <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="rank">
-                        <a href="#"><span>顶</span>20</a>
-                        <a href="#"><span>踩</span>30</a>
-                    </div>
-                    <a class="follow" href="#"><span></span>follow</a>
-                </div>
-            </div>
-            <div class="listCell">
-                <div class="avatar">
-                    <a href="profile.html">
-                        <img src="css/img/avatar2.png">
-                    </a>
-                </div>
-                <div>
-                    <h1><a href="detail.html">如果是热爱旅游的iOS程序员就来"去哪儿"吧</a></h1>
-                    <div class="tagCloud1">
-                        <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a>
-                    </div>
-                </div>
-                <div>
-                    <div class="rank">
-                        <a href="#"><span>顶</span>20</a>
-                        <a href="#"><span>踩</span>30</a>
-                    </div>
-                    <a class="follow" href="#"><span></span>follow</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="pageNav">
-            <span>共5页</span>
-                <a href="#">前页</a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <span class="current">3</span>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">后页</a>
-        </div>
-
+            {% endfor %}
+            {{ paginate(page_obj, page_url) }}
     </div>
         
 </div>

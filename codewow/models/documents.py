@@ -40,7 +40,7 @@ class User(db.Document):
     blog = db.StringField(required=False, max_length=50)
     github = db.StringField(required=False, max_length=50)
     mentions = db.ListField(required=False, item_type=db.DictField(db.AnythingField()), max_capacity=100) # FIXME maybe large 
-    follows = db.ListField(required=False, item_type=db.ObjectIdField(), max_capacity=20480) # FIXME maybe large 
+    follows = db.ListField(required=False, item_type=db.ObjectIdField()) # FIXME maybe large 
 
     @db.computed_field(db.DateTimeField())
     def updated(self):
@@ -97,17 +97,36 @@ class User(db.Document):
     def __repr__(self):
         return "<%s>" % str(self.mongo_id)
 
+    def init_optional(self):
+        self.avatar = ""
+        self.brief = ""
+        self.blog = ""
+        self.github = ""
+        self.mentions = []
+        self.follows = []
+
+    @cached_property
+    def gist_num(self):
+        return Gist.query.filter(Gist.author.mongo_id==self.mongo_id).count()
+
+    @property
+    def created_time(self):
+        if self.has_id():
+            return self.mongo_id.generation_time
+
 
 class Gist(db.Document):
+
+    PERN = 20
 
     author = db.DocumentField(User)
     desc = db.StringField(max_length=140)
     code_type = db.StringField(max_length=20)
     content = db.StringField()
     snapshot = db.StringField(required=False) # FIXME maybe change
-    eggs = db.ListField(required=False, item_type=db.ObjectIdField(), max_capacity=20480) # FIXME maybe large 
-    flowers = db.ListField(required=False, item_type=db.ObjectIdField(), max_capacity=20480) # FIXME maybe large 
-    followers = db.ListField(required=False, item_type=db.ObjectIdField(), max_capacity=10240) # FIXME maybe large 
+    eggs = db.SetField(required=False, item_type=db.ObjectIdField())
+    flowers = db.SetField(required=False, item_type=db.ObjectIdField()) 
+    followers = db.SetField(required=False, item_type=db.ObjectIdField())
     _tags = db.SetField(required=False, item_type=db.StringField(), max_capacity=8)
 
     @db.computed_field(db.DateTimeField())
@@ -182,8 +201,28 @@ class Gist(db.Document):
 
     tags = property(_get_tags, _set_tags)
 
+    def keywords(self):
+        return ','.join(self.tags)
+
+    def description(self):
+        return self.desc[:20]
+
+    def init_optional(self):
+        self.snapshot = ""
+        self.eggs = set()
+        self.flowers = set()
+        self.followers = set()
+        self.tags = set()
+
+    @property
+    def created_time(self):
+        if self.has_id():
+            return self.mongo_id.generation_time
+
 
 class Reply(db.Document):
+
+    PERN = 20
 
     author = db.DocumentField(User)
     gist = db.DocumentField(Gist)
@@ -199,7 +238,8 @@ class Reply(db.Document):
 
         @cached_property
         def delete(self):
-            return Permission(UserNeed(self.obj.author.pk)) & admin
+            return Permission(UserNeed(self.obj.author.pk)) & \
+                    Permission(UserNeed(self.obj.gist.author.pk)) & admin
 
     @cached_property
     def permissions(self):
@@ -244,6 +284,11 @@ class Reply(db.Document):
     def __repr__(self):
         return "<%s>" % str(self.mongo_id)
 
+    @property
+    def created_time(self):
+        if self.has_id():
+            return self.mongo_id.generation_time
+
 
 class Stat(db.Document):
 
@@ -260,3 +305,8 @@ class Stat(db.Document):
 
     def __repr__(self):
         return "<%s>" % str(self.mongo_id)
+
+    @property
+    def created_time(self):
+        if self.has_id():
+            return self.mongo_id.generation_time

@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
     <meta name="robots" content="all" />
     <meta name="Author" content="cloucry@gmail.com" />
-    <meta name="Keywords" content="gist, share, search, code, program"/>
+    <meta name="Keywords" content="{% block key %}gist, share, search, code, program{% endblock %}"/>
+    <meta name="Description" content="{% block desc %}a coe share follow site{% endblock %}" />
     <title>{{ _("CodeWoow") }}-{% block title %}{{ _("Share your baby code") }}{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='css/main.css') }}" >
     {% block css %}{% endblock %}
@@ -36,7 +37,7 @@
                 <a class="userName" href="{{ url_for('account.edit_profile') }}"><span></span>{{ g.user.nickname }}</a>
                 <a class="logout" href="{{ url_for('account.logout') }}"><span></span>{{ _("Sign Out") }}</a>
                 {% else %}
-                <a class="googleLogin" href="{{ url_for('account.login') }}"><span></span>{{ _("Sign in with Google Account") }}</a>
+                <a class="googleLogin" href="{{ url_for('account.login') }}"><span></span>{{ _("Sign In with OpenID") }}</a>
                 {% endif %}
 			</div>
 		</div>

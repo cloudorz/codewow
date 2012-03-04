@@ -177,7 +177,8 @@ langs = [
 class GistForm(Form):
 
     code_type = SelectField(_("Language"), validators=[required(message=_("Language required"))], choices=langs)
-    desc = TextAreaField(_("Brief"), validators=[ required(message=_("Description required"))])
+    desc = TextAreaField(_("Brief"), validators=[ required(message=_("Description required")), 
+        length(max=140, message=_("Pls. less than 140 charactaer"))])
     content = TextAreaField(_("Code"), validators=[required(message=_("Code required"))])
     tags = TextField(_("Tags"), validators=[ required(message=_("Tags required"))])
     submit = SubmitField(_("Commit"))

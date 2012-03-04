@@ -1,6 +1,6 @@
 # coding: utf-8
 
-import re, hashlib
+import re, hashlib, datetime
 
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
@@ -87,7 +87,7 @@ def timesince(dt, default=None):
     if default is None:
         default = gettext("just now")
 
-    now = datetime.utcnow()
+    now = datetime.datetime.utcnow()
     diff = now - dt
 
     years = diff.days / 365
