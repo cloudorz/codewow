@@ -32,8 +32,8 @@ class SignupForm(Form):
 
 class UpdateProfileForm(Form):
     
-    blog = TextField(_("Blog url"), validators=[optional()])
-    github = TextField(_("Github url"), validators=[optional()])
+    blog = TextField(_("Blog"), validators=[optional()])
+    github = TextField(_("Github"), validators=[optional()])
     brief = TextAreaField(_("Brief"), validators=[optional(),
         length(max=140,message=_("Pls. less than 140 characater"))])
     next = HiddenField()

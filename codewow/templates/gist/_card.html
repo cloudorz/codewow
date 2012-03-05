@@ -20,13 +20,17 @@
             </div>
         </div>
         <div class="tagCloud2">
-            <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a><a href="#">豆瓣API</a><a href="#">jQuery</a><a href="#">google app engine</a><a href="#">macbok pro</a>
+            {% for e in g.tags %}
+            <a href="{{ url_for('home.tag', tag=e.name) }}">{{ e.name }}</a>
+            {% endfor %}
         </div>
     </div>
     {% else %}
     <a class="btnShare" href="{{ url_for('gist.create_gist') }}">{{ _("Share my code") }}</a>
     <div class="tagCloud2">
-        <a href="#">问与答</a><a href="#">做个好孩子</a><a href="#">Python</a><a href="#">随想</a><a href="#">豆瓣API</a><a href="#">jQuery</a><a href="#">google app engine</a><a href="#">macbok pro</a>
+        {% for e in g.tags %}
+        <a href="{{ url_for('home.tag', tag=e.name) }}">{{ e.name }}</a>
+        {% endfor %}
     </div>
     {% endif %}
 </div>

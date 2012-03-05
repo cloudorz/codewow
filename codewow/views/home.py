@@ -34,3 +34,20 @@ def tag(tag, p=1):
     return render_template("index.html",
             page_obj=page_obj, 
             page_url=page_url)
+
+
+@home.route("/s", methods=('GET',))
+def search():
+    q = request.args.get('q', "")
+    p = int(request.args.get('p', 1))
+    if p<1: p=1
+
+    page_obj = Gist.query.descending(Gist.mongo_id).\
+            paginate(page=p, per_page=Gist.PERN, error_out=False)
+    page_url = lambda pn: url_for("home.index", p=pn)
+
+    return render_template("index.html",
+            page_obj=page_obj, 
+            page_url=page_url,
+            q=q,
+            )

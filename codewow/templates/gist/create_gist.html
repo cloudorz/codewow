@@ -29,15 +29,9 @@
             </div>
             <div>
                 <div class="myTagCloud">
-                    <div><span>python</span><a href="javascript:void(0);"></a></div>
-                    <div><span>大并发</span><a href="#"></a></div>
-                    <div><span>明明很高兴</span><a href="#"></a></div>
-                    <div><span>python</span><a href="#"></a></div>
-                    <div><span>大并发</span><a href="#"></a></div>
-                    <div><span>明明很高兴</span><a href="#"></a></div>
-                    <div><span>python</span><a href="#"></a></div>
-                    <div><span>大并发</span><a href="#"></a></div>
-                    <div><span>明明很高兴</span><a href="#"></a></div>
+                    {% for e in g.user.recommend_tags %}
+                    <div><span>{{ e.name }}</span></div>
+                    {% endfor %}
                 </div>
             </div>
             <div>

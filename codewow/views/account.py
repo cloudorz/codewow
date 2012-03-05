@@ -6,7 +6,7 @@ from flaskext.principal import identity_changed, Identity, AnonymousIdentity
 
 from codewow.ext import oid, COMMON_PROVIDERS
 from codewow.forms import SignupForm, UpdateProfileForm
-from codewow.models import User
+from codewow.models import User, Gist, Reply
 
 account = Module(__name__)
 
@@ -91,6 +91,7 @@ def edit_profile():
 
             return redirect(url_for('home.index'))
 
+        flash(_('Profile Updated'), 'success')
         form.populate_obj(g.user)
         g.user.save()
 

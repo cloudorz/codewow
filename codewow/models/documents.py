@@ -1,6 +1,6 @@
 # coding: utf-8
 
-import datetime, re
+import datetime, re, operator
 
 from flask import g, request, abort, url_for, session
 from werkzeug import cached_property
@@ -113,6 +113,35 @@ class User(db.Document):
     def created_time(self):
         if self.has_id():
             return self.mongo_id.generation_time
+
+    @cached_property
+    def tag_cloud(self):
+        last = Stat.query.descending(Stat.mongo_id).first()
+        if last:
+            tags = sorted(last.tag_set.items(), key=operator.itemgetter(1), reverse=True)[:20]
+        else:
+            tags = []
+
+        return [{'name':k, 'count': v} for k,v in tags]
+
+    @cached_property
+    def recommend_tags(self):
+        # FIXME very cost 
+        gists = Gist.query.filter(Gist.author.mongo_id==self.mongo_id)
+    
+        tags = []
+        if gists.count() > 0:
+            tag_list = []
+            tag_set = set()
+            for e in gists:
+                tag_list.extend(e.tags)
+                tag_set.update(e.tags)
+
+            tag_num_list = [(e, tag_list.count(e)) for e in tag_set]
+
+            tags = sorted(tag_num_list, key=operator.itemgetter(1), reverse=True)[:10]
+
+        return [{'name':k, 'count': v} for k,v in tags]
 
 
 class Gist(db.Document):

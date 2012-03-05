@@ -1,5 +1,7 @@
 # coding: utf-8
 
+import operator
+
 from flask import Flask, g, session, request, redirect, url_for, jsonify, render_template, flash
 
 from flaskext.principal import Principal, identity_loaded
@@ -7,7 +9,7 @@ from flaskext.babel import Babel, gettext as _ # P.S: use gettext, not lazy_gett
 
 from codewow import views, helpers
 from codewow.ext import db, oid
-from codewow.models import User
+from codewow.models import User, Stat
 from codewow.utils.escape import json_encode, json_decode
 
 # configure
@@ -94,6 +96,16 @@ def configure_ba_handlers(app):
                 abort(415)
             else:
                 request.json_data = data
+
+    @app.before_request
+    def tag_cloud():
+        last = Stat.query.descending(Stat.mongo_id).first()
+        if last:
+            tags = sorted(last.tag_set.items(), key=operator.itemgetter(1), reverse=True)[:20]
+        else:
+            tags = []
+
+        g.tags = [{'name':k, 'count': v} for k,v in tags]
 
 
 def configure_errorhandlers(app):
