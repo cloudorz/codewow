@@ -702,35 +702,6 @@ form.shareCode .codeSubmit:hover{
 }
 .myTagCloud div:hover a{background-position:-24px -96px;}
 
-/*login*/
-a.btnLogin{
-	font-family:;
-	display:block;
-	background-color:#f8f8f8;
-	border:1px solid #eee;
-	border-radius:4px;
-	height:80px;
-	line-height:80px;
-	color:#b7b0ac;
-	font-size:18px;
-	text-shadow:white 0px 1px 0px;
-}
-a.btnLogin span{
-	display:block;
-	float:left;
-}
-a.btnLogin:hover{
-	background-color:#f4f4f4;
-	border-color:#dedede;
-	color:#a69d98;
-}
-a.google span{
-	width:118px;
-	height:40px;
-	background:url("img/google.png");
-	margin:20px 50px 0px 30px;
-}
-
 /*editProfile*/
 form.editProfile label{
 	display:inline-block;
@@ -775,3 +746,24 @@ form.editProfile input[type="submit"]:hover{
 form.editProfile input[type="file"]{
 	color:#6087B0;
 }
+
+form.btnLogin input[type="submit"]{
+	background:url("img/google.png") 35px 20px no-repeat;
+	background-color:#f8f8f8;
+	border:1px solid #eee;
+	border-radius:5px;
+	height:80px;
+	width:100%;
+	line-height:80px;
+	color:#b7b0ac;
+	font-size:18px;
+	text-shadow:white 0px 1px 0px;
+}
+
+form.btnLogin input[type="submit"]:hover{
+	background-color:#f4f4f4;
+	border-color:#dedede;
+	color:#a69d98;
+	cursor:pointer;
+}
+

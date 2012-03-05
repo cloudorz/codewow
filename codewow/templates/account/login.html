@@ -2,14 +2,21 @@
 {% block title %}Sign in{% endblock %}
 {% block content %}
 <div id="content">
-  <h2>Sign in</h2>
-  <form action="" method=post>
-    {% if error %}<p class=error><strong>Error:</strong> {{ error }}</p>{% endif %}
-    <p>
-      OpenID:
-      <input type=hidden name=openid value="google" size=30>
-      <input type=hidden name=next value="{{ next }}">
-      <input type=submit value="Sign in with Google">
-  </form>
-</div>
+			<div class="rSection">
+
+			</div>
+			<div class="lSection">
+				<form class="btnLogin" action="" method="post">
+                    {% if error %}
+                    <p class=error><strong>Error:</strong> {{ error }}</p>
+                    {% endif %}
+				    <p>
+				      <input type="hidden" name="openid" value="google" size="30">
+                      <input type="hidden" name="next" value="{{ next }}">
+				      <input class="google" type="submit" value="Sign in with Google">
+				  	</p>
+				</form>
+			</div>
+				
+		</div>
 {% endblock %}
