@@ -766,3 +766,36 @@ form.btnLogin input[type="submit"]:hover{
 #flashed span.flash-error{
 	color:#eb6e6e;
 }
+/*create profile*/
+.description{margin-bottom:15px;}
+.description h2{font-size:16px; color:#666; margin-bottom:5px;}
+.description p{font-size:14px; color:#999; line-height:18px;}
+
+form.createProfile table th{
+	line-height:36px;
+	font-size:14px;
+	color:#999;
+	padding-right:25px;
+}
+form.createProfile table input[type="text"]{
+	color:#555;
+	padding:5px;
+	font-size:14px;
+	border:1px solid #DFD8D4;
+}
+form.createProfile .btnSubmit{
+	border:none;
+	height:30px;
+	padding:0px 20px;
+	font-family:tahoma,arial,sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	color:white;
+	text-shadow:0px 1px 0px #522223;
+	background-color:#a54547;
+	margin-top:10px;
+}
+form.createProfile .btnSubmit:hover{
+	background-color:#923436;
+	cursor:pointer;
+}
