@@ -177,13 +177,15 @@ def follow_gist(gist_id):
         g.user.follows.append(gist.mongo_id)
         gist.followers.add(g.user.mongo_id)
         op = 'follow'
+        msg = _('unfollow')
 
     else:
         g.user.follows.remove(gist.mongo_id)
         gist.followers.remove(g.user.mongo_id)
         op = 'unfollow'
+        msg = _('follow')
 
     gist.save()
     g.user.save()
 
-    return jsonify(success=True, op=op, follow_num=len(g.user.follows))
+    return jsonify(success=True, op=op, follow_num=len(g.user.follows), msg=msg)

@@ -39,11 +39,11 @@
                 <div>
                     <div class="rankArea">
                         <div>
-                            <a class="btnUp up" href="{{ url_for('gist.vote_gist', gist_id=gist.pk, op='up') }}" >赞一个</a>
+                            <a class="btnUp up" href="{{ url_for('gist.vote_gist', gist_id=gist.pk, op='up') }}" >{{ _("Good") }}</a>
                             <p>{{ gist.flowers|length }}</p>
                         </div>
                         <div>
-                            <a class="btnDown down" href="{{ url_for('gist.vote_gist', gist_id=gist.pk, op='down') }}" >踩一脚</a>
+                            <a class="btnDown down" href="{{ url_for('gist.vote_gist', gist_id=gist.pk, op='down') }}" >{{ _("Bad") }}</a>
                             <p>{{ gist.eggs|length }}</p>
                         </div>
                     </div>

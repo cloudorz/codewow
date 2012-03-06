@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Sign in{% endblock %}
+{% block title %}{{ _("Sign in") }}{% endblock %}
 {% block content %}
 <div id="content">
 			<div class="rSection">
@@ -8,12 +8,12 @@
 			<div class="lSection">
 				<form class="btnLogin" action="" method="post">
                     {% if error %}
-                    <p class=error><strong>Error:</strong> {{ error }}</p>
+                    <p class=error><strong>{{ _("Error") }}:</strong> {{ error }}</p>
                     {% endif %}
 				    <p>
 				      <input type="hidden" name="openid" value="google" size="30">
                       <input type="hidden" name="next" value="{{ next }}">
-				      <input class="google" type="submit" value="Sign in with Google">
+                      <input class="google" type="submit" value="{{ _("Sign in with Google") }}">
 				  	</p>
 				</form>
 			</div>

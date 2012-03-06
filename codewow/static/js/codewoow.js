@@ -23,9 +23,9 @@ $(document).ready(function(){
         $.getJSON(url, function(data){
             if (data.success){
                 if (data.op == 'follow'){
-                    cur.attr('class', 'unfollow').html("<span></span>unfollow")
+                    cur.attr('class', 'unfollow').html("<span></span>"+data.msg)
                 } else{
-                    cur.attr('class', 'follow').html("<span></span>follow")
+                    cur.attr('class', 'follow').html("<span></span>"+data.msg)
                 }
                 $(".rSection .followCount p:first").text(data.follow_num);
             } else {

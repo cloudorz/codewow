@@ -1,0 +1,346 @@
+# Chinese translations for PROJECT.
+# Copyright (C) 2012 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2012-03-06 15:57+0800\n"
+"PO-Revision-Date: 2012-03-06 15:03+0800\n"
+"Last-Translator: Cloud Dai <cloudcry@gmail.com>\n"
+"Language-Team: zh <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+#: codewow/__init__.py:115
+msgid "Login required"
+msgstr "请登录"
+
+#: codewow/__init__.py:116
+msgid "Please login to see this page"
+msgstr "请先登录"
+
+#: codewow/__init__.py:122
+msgid "Sorry, page not allowed"
+msgstr "无权访问此页"
+
+#: codewow/__init__.py:128
+msgid "Sorry, page not found"
+msgstr "未发现此页"
+
+#: codewow/__init__.py:134
+msgid "Sorry, an error has occurred"
+msgstr "出现错误"
+
+#: codewow/__init__.py:139
+msgid "Json format error"
+msgstr "JSON的格式有错"
+
+#: codewow/__init__.py:143
+msgid "args error"
+msgstr "参数错误"
+
+#: codewow/helpers.py:88
+msgid "just now"
+msgstr "刚刚"
+
+#: codewow/helpers.py:103
+#, python-format
+msgid "%(num)s year"
+msgid_plural "%(num)s years"
+msgstr[0] "%(num)s年"
+msgstr[1] "%(num)s年"
+
+#: codewow/helpers.py:104
+#, python-format
+msgid "%(num)s month"
+msgid_plural "%(num)s months"
+msgstr[0] "%(num)s月"
+msgstr[1] "%(num)s月"
+
+#: codewow/helpers.py:105
+#, python-format
+msgid "%(num)s week"
+msgid_plural "%(num)s weeks"
+msgstr[0] "%(num)s星期"
+msgstr[1] "%(num)s星期"
+
+#: codewow/helpers.py:106
+#, python-format
+msgid "%(num)s day"
+msgid_plural "%(num)s days"
+msgstr[0] "%(num)s天"
+msgstr[1] "%(num)s天"
+
+#: codewow/helpers.py:107
+#, python-format
+msgid "%(num)s hour"
+msgid_plural "%(num)s hours"
+msgstr[0] "%(num)s小时"
+msgstr[1] "%(num)s小时"
+
+#: codewow/helpers.py:108
+#, python-format
+msgid "%(num)s minute"
+msgid_plural "%(num)s minutes"
+msgstr[0] "%(num)s分钟"
+msgstr[1] "%(num)s分钟"
+
+#: codewow/helpers.py:109
+#, python-format
+msgid "%(num)s second"
+msgid_plural "%(num)s seconds"
+msgstr[0] "%(num)s秒"
+msgstr[1] "%(num)s秒"
+
+#: codewow/helpers.py:117
+#, python-format
+msgid "%(period)s ago"
+msgstr "%(period)s以前"
+
+#: codewow/forms/gist.py:179
+msgid "Language"
+msgstr "语言"
+
+#: codewow/forms/gist.py:179
+msgid "Language required"
+msgstr "请填入语言类型"
+
+#: codewow/forms/gist.py:180 codewow/forms/user.py:37
+msgid "Brief"
+msgstr "简介"
+
+#: codewow/forms/gist.py:180
+msgid "Description required"
+msgstr "请填入片段简介"
+
+#: codewow/forms/gist.py:181
+msgid "Pls. less than 140 charactaer"
+msgstr "不要超过140个字符"
+
+#: codewow/forms/gist.py:182
+msgid "Code"
+msgstr "代码"
+
+#: codewow/forms/gist.py:182
+msgid "Code required"
+msgstr "请填入你的代码片段"
+
+#: codewow/forms/gist.py:183
+msgid "Tags"
+msgstr "标签"
+
+#: codewow/forms/gist.py:183
+msgid "Tags required"
+msgstr "必须要有标签"
+
+#: codewow/forms/gist.py:184 codewow/forms/reply.py:11
+msgid "Commit"
+msgstr "提交"
+
+#: codewow/forms/reply.py:9
+msgid "Reply"
+msgstr "回应"
+
+#: codewow/forms/reply.py:9
+msgid "Content required"
+msgstr "请填入内容"
+
+#: codewow/forms/reply.py:10 codewow/forms/user.py:38
+msgid "Pls. less than 140 characater"
+msgstr "不要超过140个字符"
+
+#: codewow/forms/user.py:12
+msgid "Nickname"
+msgstr "昵称"
+
+#: codewow/forms/user.py:13
+msgid "Nickname required"
+msgstr "请填入你的昵称"
+
+#: codewow/forms/user.py:15
+msgid "Email address"
+msgstr "Email"
+
+#: codewow/forms/user.py:16
+msgid "Email address required"
+msgstr "请填入你的Email地址"
+
+#: codewow/forms/user.py:17
+msgid "A valid email address is required"
+msgstr "请填入有效的Email地址"
+
+#: codewow/forms/user.py:20
+msgid "Create profile"
+msgstr "创建个人档案"
+
+#: codewow/forms/user.py:25
+msgid "This nickname is taken"
+msgstr "这个昵称已使用"
+
+#: codewow/forms/user.py:30
+msgid "This email is taken"
+msgstr "这个Email已被使用"
+
+#: codewow/forms/user.py:35
+msgid "Blog"
+msgstr "个人博客"
+
+#: codewow/forms/user.py:36
+msgid "Github"
+msgstr "Github"
+
+#: codewow/forms/user.py:40
+msgid "Update profile"
+msgstr "更新"
+
+#: codewow/forms/user.py:41
+msgid "Delete"
+msgstr "删除"
+
+#: codewow/forms/validators.py:6
+msgid "You can only use a-z,A-Z,0-9,_"
+msgstr "你昵称只包含以下字符a-z,A-Z,0-9,_"
+
+#: codewow/templates/layout.html:9
+msgid "CodeWoow"
+msgstr "CodeWoow"
+
+#: codewow/templates/layout.html:9
+msgid "Share your baby code"
+msgstr "分享你的代码"
+
+#: codewow/templates/layout.html:25
+msgid "Search"
+msgstr "搜索"
+
+#: codewow/templates/layout.html:38
+msgid "Sign Out"
+msgstr "登出"
+
+#: codewow/templates/layout.html:40
+msgid "Sign In with OpenID"
+msgstr "用OpenID登录"
+
+#: codewow/templates/account/create_profile.html:3
+#: codewow/templates/account/create_profile.html:9
+msgid "Create Profile"
+msgstr "创建个人档案"
+
+#: codewow/templates/account/edit_profile.html:3
+msgid "Edit Profile"
+msgstr "编辑个人信息"
+
+#: codewow/templates/account/login.html:2
+msgid "Sign in"
+msgstr ""
+
+#: codewow/templates/account/login.html:11
+msgid "Error"
+msgstr "错误"
+
+#: codewow/templates/account/login.html:16
+msgid "Sign in with Google"
+msgstr "用OpenID登录"
+
+#: codewow/templates/gist/_card.html:4 codewow/templates/gist/_card.html:29
+msgid "Share my code"
+msgstr "分享代码"
+
+#: codewow/templates/gist/_card.html:15 codewow/templates/gist/personal.html:16
+msgid "share"
+msgstr "分享"
+
+#: codewow/templates/gist/_card.html:18 codewow/templates/gist/babies.html:33
+#: codewow/templates/gist/detail.html:27
+#: codewow/templates/gist/personal.html:19
+#: codewow/templates/gist/personal.html:49 codewow/views/gist.py:186
+msgid "follow"
+msgstr "关注"
+
+#: codewow/templates/gist/babies.html:31 codewow/templates/gist/detail.html:25
+#: codewow/templates/gist/personal.html:47 codewow/views/gist.py:180
+msgid "unfollow"
+msgstr "取消"
+
+#: codewow/templates/gist/detail.html:19
+msgid "delete"
+msgstr "删除"
+
+#: codewow/templates/gist/detail.html:22
+msgid "edit"
+msgstr "编辑"
+
+#: codewow/templates/gist/detail.html:42
+msgid "Good"
+msgstr "赞一下"
+
+#: codewow/templates/gist/detail.html:46
+msgid "Bad"
+msgstr "踩一下"
+
+#: codewow/templates/macros/_page.html:4
+msgid "Total"
+msgstr "总共"
+
+#: codewow/templates/macros/_page.html:6
+msgid "Previous"
+msgstr "前一页"
+
+#: codewow/templates/macros/_page.html:16
+msgid "Next"
+msgstr "下一页"
+
+#: codewow/views/account.py:36
+msgid "Successfully signed in"
+msgstr "登录成功"
+
+#: codewow/views/account.py:65
+msgid "Profile successfully created"
+msgstr "建立档案成功"
+
+#: codewow/views/account.py:90
+msgid "Profile deleted"
+msgstr "删除成功"
+
+#: codewow/views/account.py:94
+msgid "Profile Updated"
+msgstr "信息更新成功"
+
+#: codewow/views/account.py:108
+msgid "You have been signed out"
+msgstr "你已登出"
+
+#: codewow/views/gist.py:29
+msgid "Post Comment success"
+msgstr "发表评论"
+
+#: codewow/views/gist.py:90
+msgid "Post gist success"
+msgstr "分享成功"
+
+#: codewow/views/gist.py:116
+msgid "Gist has been changed"
+msgstr "更新成功"
+
+#: codewow/views/gist.py:136
+msgid "Your gist has been deleted"
+msgstr "删除成功"
+
+#: codewow/views/gist.py:140
+msgid "The post has been deleted"
+msgstr "删除成功"
+
+#: codewow/views/reply.py:24
+msgid "Your reply has been deleted"
+msgstr "删除成功"
+
+#: codewow/views/reply.py:28
+msgid "The reply has been deleted"
+msgstr "删除成功"
+

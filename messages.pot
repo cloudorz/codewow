@@ -1,0 +1,346 @@
+# Translations template for PROJECT.
+# Copyright (C) 2012 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2012-03-06 15:57+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+#: codewow/__init__.py:115
+msgid "Login required"
+msgstr ""
+
+#: codewow/__init__.py:116
+msgid "Please login to see this page"
+msgstr ""
+
+#: codewow/__init__.py:122
+msgid "Sorry, page not allowed"
+msgstr ""
+
+#: codewow/__init__.py:128
+msgid "Sorry, page not found"
+msgstr ""
+
+#: codewow/__init__.py:134
+msgid "Sorry, an error has occurred"
+msgstr ""
+
+#: codewow/__init__.py:139
+msgid "Json format error"
+msgstr ""
+
+#: codewow/__init__.py:143
+msgid "args error"
+msgstr ""
+
+#: codewow/helpers.py:88
+msgid "just now"
+msgstr ""
+
+#: codewow/helpers.py:103
+#, python-format
+msgid "%(num)s year"
+msgid_plural "%(num)s years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: codewow/helpers.py:104
+#, python-format
+msgid "%(num)s month"
+msgid_plural "%(num)s months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: codewow/helpers.py:105
+#, python-format
+msgid "%(num)s week"
+msgid_plural "%(num)s weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: codewow/helpers.py:106
+#, python-format
+msgid "%(num)s day"
+msgid_plural "%(num)s days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: codewow/helpers.py:107
+#, python-format
+msgid "%(num)s hour"
+msgid_plural "%(num)s hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: codewow/helpers.py:108
+#, python-format
+msgid "%(num)s minute"
+msgid_plural "%(num)s minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: codewow/helpers.py:109
+#, python-format
+msgid "%(num)s second"
+msgid_plural "%(num)s seconds"
+msgstr[0] ""
+msgstr[1] ""
+
+#: codewow/helpers.py:117
+#, python-format
+msgid "%(period)s ago"
+msgstr ""
+
+#: codewow/forms/gist.py:179
+msgid "Language"
+msgstr ""
+
+#: codewow/forms/gist.py:179
+msgid "Language required"
+msgstr ""
+
+#: codewow/forms/gist.py:180 codewow/forms/user.py:37
+msgid "Brief"
+msgstr ""
+
+#: codewow/forms/gist.py:180
+msgid "Description required"
+msgstr ""
+
+#: codewow/forms/gist.py:181
+msgid "Pls. less than 140 charactaer"
+msgstr ""
+
+#: codewow/forms/gist.py:182
+msgid "Code"
+msgstr ""
+
+#: codewow/forms/gist.py:182
+msgid "Code required"
+msgstr ""
+
+#: codewow/forms/gist.py:183
+msgid "Tags"
+msgstr ""
+
+#: codewow/forms/gist.py:183
+msgid "Tags required"
+msgstr ""
+
+#: codewow/forms/gist.py:184 codewow/forms/reply.py:11
+msgid "Commit"
+msgstr ""
+
+#: codewow/forms/reply.py:9
+msgid "Reply"
+msgstr ""
+
+#: codewow/forms/reply.py:9
+msgid "Content required"
+msgstr ""
+
+#: codewow/forms/reply.py:10 codewow/forms/user.py:38
+msgid "Pls. less than 140 characater"
+msgstr ""
+
+#: codewow/forms/user.py:12
+msgid "Nickname"
+msgstr ""
+
+#: codewow/forms/user.py:13
+msgid "Nickname required"
+msgstr ""
+
+#: codewow/forms/user.py:15
+msgid "Email address"
+msgstr ""
+
+#: codewow/forms/user.py:16
+msgid "Email address required"
+msgstr ""
+
+#: codewow/forms/user.py:17
+msgid "A valid email address is required"
+msgstr ""
+
+#: codewow/forms/user.py:20
+msgid "Create profile"
+msgstr ""
+
+#: codewow/forms/user.py:25
+msgid "This nickname is taken"
+msgstr ""
+
+#: codewow/forms/user.py:30
+msgid "This email is taken"
+msgstr ""
+
+#: codewow/forms/user.py:35
+msgid "Blog"
+msgstr ""
+
+#: codewow/forms/user.py:36
+msgid "Github"
+msgstr ""
+
+#: codewow/forms/user.py:40
+msgid "Update profile"
+msgstr ""
+
+#: codewow/forms/user.py:41
+msgid "Delete"
+msgstr ""
+
+#: codewow/forms/validators.py:6
+msgid "You can only use a-z,A-Z,0-9,_"
+msgstr ""
+
+#: codewow/templates/layout.html:9
+msgid "CodeWoow"
+msgstr ""
+
+#: codewow/templates/layout.html:9
+msgid "Share your baby code"
+msgstr ""
+
+#: codewow/templates/layout.html:25
+msgid "Search"
+msgstr ""
+
+#: codewow/templates/layout.html:38
+msgid "Sign Out"
+msgstr ""
+
+#: codewow/templates/layout.html:40
+msgid "Sign In with OpenID"
+msgstr ""
+
+#: codewow/templates/account/create_profile.html:3
+#: codewow/templates/account/create_profile.html:9
+msgid "Create Profile"
+msgstr ""
+
+#: codewow/templates/account/edit_profile.html:3
+msgid "Edit Profile"
+msgstr ""
+
+#: codewow/templates/account/login.html:2
+msgid "Sign in"
+msgstr ""
+
+#: codewow/templates/account/login.html:11
+msgid "Error"
+msgstr ""
+
+#: codewow/templates/account/login.html:16
+msgid "Sign in with Google"
+msgstr ""
+
+#: codewow/templates/gist/_card.html:4 codewow/templates/gist/_card.html:29
+msgid "Share my code"
+msgstr ""
+
+#: codewow/templates/gist/_card.html:15 codewow/templates/gist/personal.html:16
+msgid "share"
+msgstr ""
+
+#: codewow/templates/gist/_card.html:18 codewow/templates/gist/babies.html:33
+#: codewow/templates/gist/detail.html:27
+#: codewow/templates/gist/personal.html:19
+#: codewow/templates/gist/personal.html:49 codewow/views/gist.py:186
+msgid "follow"
+msgstr ""
+
+#: codewow/templates/gist/babies.html:31 codewow/templates/gist/detail.html:25
+#: codewow/templates/gist/personal.html:47 codewow/views/gist.py:180
+msgid "unfollow"
+msgstr ""
+
+#: codewow/templates/gist/detail.html:19
+msgid "delete"
+msgstr ""
+
+#: codewow/templates/gist/detail.html:22
+msgid "edit"
+msgstr ""
+
+#: codewow/templates/gist/detail.html:42
+msgid "Good"
+msgstr ""
+
+#: codewow/templates/gist/detail.html:46
+msgid "Bad"
+msgstr ""
+
+#: codewow/templates/macros/_page.html:4
+msgid "Total"
+msgstr ""
+
+#: codewow/templates/macros/_page.html:6
+msgid "Previous"
+msgstr ""
+
+#: codewow/templates/macros/_page.html:16
+msgid "Next"
+msgstr ""
+
+#: codewow/views/account.py:36
+msgid "Successfully signed in"
+msgstr ""
+
+#: codewow/views/account.py:65
+msgid "Profile successfully created"
+msgstr ""
+
+#: codewow/views/account.py:90
+msgid "Profile deleted"
+msgstr ""
+
+#: codewow/views/account.py:94
+msgid "Profile Updated"
+msgstr ""
+
+#: codewow/views/account.py:108
+msgid "You have been signed out"
+msgstr ""
+
+#: codewow/views/gist.py:29
+msgid "Post Comment success"
+msgstr ""
+
+#: codewow/views/gist.py:90
+msgid "Post gist success"
+msgstr ""
+
+#: codewow/views/gist.py:116
+msgid "Gist has been changed"
+msgstr ""
+
+#: codewow/views/gist.py:136
+msgid "Your gist has been deleted"
+msgstr ""
+
+#: codewow/views/gist.py:140
+msgid "The post has been deleted"
+msgstr ""
+
+#: codewow/views/reply.py:24
+msgid "Your reply has been deleted"
+msgstr ""
+
+#: codewow/views/reply.py:28
+msgid "The reply has been deleted"
+msgstr ""
+
