@@ -215,6 +215,7 @@ body{font-family:arial,sans-serif;}
 	margin-right:3px;
 }
 .tagCloud1 a:hover{color:white;background-color:#beb2aa;}
+form.shareCode .tagCloud1{margin-left:75px;overflow:hidden;}
 
 /*left list*/
 .listCell{
@@ -469,29 +470,6 @@ form.shareCode .codeSubmit:hover{
 	background-color:#923436;
 	cursor:pointer;
 }
-
-.myTagCloud{overflow:hidden; margin-left:75px;}
-.myTagCloud div{float:left; overflow: hidden; margin-right:8px;}
-.myTagCloud div span{
-	display:inline-block;
-	height:24px;
-	vertical-align: top;
-	font-size:12px;
-	line-height:24px;
-	padding:0px 10px;
-	color:#9d8c83;
-	background-color:#f5f3f1;
-	margin-right:1px;
-}
-.myTagCloud div:hover span{background-color:#BEB2AA; color:white;}
-.myTagCloud div a{
-	display:inline-block;
-	line-height:24px;
-	width:24px;
-	height:24px;
-	background:url("img/icons.png") 0px -96px;
-}
-.myTagCloud div:hover a{background-position:-24px -96px;}
 
 .me>a{
 	display:block;
@@ -766,4 +744,25 @@ form.btnLogin input[type="submit"]:hover{
 	color:#a69d98;
 	cursor:pointer;
 }
-
+#flashed{
+	font-family:tahoma;
+	position:absolute;
+	font-family:tahoma;
+	z-index:3;
+	width:100%;
+	text-align:center;
+}
+#flashed span{
+	padding:15px 50px;
+	background-color:#fffeee;
+	border:1px solid #e6e4cf;
+	border-top:none;
+	border-radius:0px 0px 5px 5px;
+	line-height:40px;
+}
+#flashed span.flash-success{
+	color:#94c64e;
+}
+#flashed span.flash-error{
+	color:#eb6e6e;
+}

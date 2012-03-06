@@ -63,7 +63,7 @@
                     <div>
                         <a href="#">{{ r.author.nickname }}</a>
                         <p>{{ r.content|safe }}</p>
-                        <span>{{ r.created_time|format_datetime }}</span>
+                        <span>{{ r.created_time|timesince }}</span>
                     </div>
                     {% if r.permissions.delete.can()  %}
                     <div class="delete"><a href="{{ url_for("reply.del_reply", reply_id=r.pk) }}"></a></div>

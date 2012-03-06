@@ -28,9 +28,9 @@
                 {{ render_errors(form.tags) }}
             </div>
             <div>
-                <div class="myTagCloud">
+                <div class="tagCloud1">
                     {% for e in g.user.recommend_tags %}
-                    <div><span>{{ e.name }}</span></div>
+                    <div><a href="#">{{ e.name }}</a></div>
                     {% endfor %}
                 </div>
             </div>

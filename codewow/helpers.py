@@ -88,7 +88,8 @@ def timesince(dt, default=None):
         default = gettext("just now")
 
     now = datetime.datetime.utcnow()
-    diff = now - dt
+    naive = dt.replace(tzinfo=None)
+    diff = now - naive
 
     years = diff.days / 365
     months = diff.days / 30
@@ -107,6 +108,9 @@ def timesince(dt, default=None):
         (minutes, ngettext("%(num)s minute", "%(num)s minutes", num=minutes)),
         (seconds, ngettext("%(num)s second", "%(num)s seconds", num=seconds)),
     )
+
+    if weeks:
+        return format_datetime(dt, "short")
 
     for period, trans in periods:
         if period:

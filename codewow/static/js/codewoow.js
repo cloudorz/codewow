@@ -93,5 +93,28 @@ $(document).ready(function(){
             return false;
         });
     });
+
+    $(function(){
+        $("form div.tagCloud1 a").click(function(){
+            var tag = $(this).text()
+            var old = $(".tagInput").val();
+            if (old.trim() == ""){
+                newtags = tag; 
+            } else{
+                newtags = old + " " + tag;
+            }
+            $(".tagInput").val(newtags);
+            return false;
+        });
+    });
+
+// message effect
+     $(function() {
+         function disappear() {
+             $('#flashed').fadeTo('slow', 0.8).fadeTo('slow', 0.4).fadeTo('slow', 0.2).fadeOut('fast');
+         }
+ 
+         setTimeout(disappear, 1300);
+     });
 		
 })

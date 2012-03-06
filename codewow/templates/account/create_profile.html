@@ -2,33 +2,38 @@
 {% from "macros/_forms.html" import render_errors %}
 {% block title %}Create Profile{% endblock %}
 {% block content %}
-<div id="content">
-  <h2 class="title">Create Profile</h2>
-  <p>
-    Hey!  This is the first time you signed in on this website.  In
-    order to proceed we need some extra information from you:
-   </p>
-    <div id="sign">
-    <form method="post" >
-        {{ form.hidden_tag() }}
-        <table cellspacing="0" class="form-table">
-        <tbody>
-            <tr>
-                <th>{{ form.nickname.label }}</th>
-                <td>{{ form.nickname(size=30) }} {{ render_errors(form.nickname) }}</td>
-            </tr>
-            <tr>
-                <th>{{ form.email.label }}</th>
-                <td>{{ form.email(size=30) }} {{ render_errors(form.email) }}</td>
-            </tr>
-            <tr>
-                <th></th>
-                <td>{{ form.submit }}</td>
-            </tr>
-            If you don't want to proceed, you can <a href="{{ url_for('account.logout') }}">sign out</a> again.
-        </tbody>
-        </table>
-    </form>
-</div>
-</div>
+   <div id="content">
+        <div class="rSection"></div>
+        <div class="lSection">
+            <div class="description">
+                <h2 class="title">Create Profile</h2>
+                <p>
+                Hey!  This is the first time you signed in on this site.  In
+                order to proceed we need some extra information from you:
+                </p>
+            </div>
+            <div class="hr"></div>
+            <div id="sign">
+                <form class="createProfile" method="post">
+                    {{ form.hidden_tag() }}
+                    <table class="form-table" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th>{{ form.nickname.label }}</th>
+                            <td>{{ form.nickname(size=30) }} {{ render_errors(form.nickname) }}</td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ form.email.label }}</th>
+                            <td>{{ form.email(size=30) }} {{ render_errors(form.email) }}</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>{{ form.submit(class="btnSubmit") }}If you don't want to proceed, you can <a href="{{ url_for('account.logout') }}">sign out</a> again.</td>
+                        </tr></tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
