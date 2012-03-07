@@ -7,6 +7,7 @@ from werkzeug import cached_property
 from flaskext.principal import RoleNeed, UserNeed, Permission
 from flaskext.mongoalchemy import BaseQuery
 from mongoalchemy.exceptions import ExtraValueException
+from mongoalchemy.document import Index
 
 from codewow.ext import db
 from codewow.permissions import admin, sa
@@ -162,6 +163,8 @@ class Gist(db.Document):
     def updated(self):
         return now()
 
+    t_index = Index().ascending('_tags')
+
     class Permissions(object):
         def __init__(self, obj):
             self.obj = obj
@@ -209,7 +212,7 @@ class Gist(db.Document):
 
     @cached_property
     def uri(self):
-        return url_for("gist.gist_resource", gist_id=self.pk)
+        return url_for("gist.detail_gist", gist_id=self.pk)
 
     def __str__(self):
         return "<%s>" % str(self.mongo_id)

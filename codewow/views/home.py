@@ -1,5 +1,7 @@
 # coding: utf-8
 
+import re
+
 from flask import Module, request, flash, abort, redirect, url_for, session, render_template, g
 
 from codewow.ext import db
@@ -38,11 +40,14 @@ def tag(tag, p=1):
 
 @home.route("/s", methods=('GET',))
 def search():
+    # TODO 
     q = request.args.get('q', "")
     p = int(request.args.get('p', 1))
     if p<1: p=1
-
-    page_obj = Gist.query.descending(Gist.mongo_id).\
+    rqs = [e for e in re.split('\s+', q) if e]
+    print rqs
+    page_obj = Gist.query.in_(Gist._tags, *rqs).\
+            descending(Gist.mongo_id).\
             paginate(page=p, per_page=Gist.PERN, error_out=False)
     page_url = lambda pn: url_for("home.index", p=pn)
 
