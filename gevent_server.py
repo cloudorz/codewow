@@ -1,6 +1,6 @@
 # coding: utf-8
 from gevent.wsgi import WSGIServer
-from codewoow import create_app
+from codewow import create_app
 
 app = create_app('production.cfg')
 
