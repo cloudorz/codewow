@@ -80,7 +80,7 @@
             <div>
                 <form method="POST" class="commentBox">
                     {{ form.hidden_tag() }}
-                    {{ form.content }}
+                    {{ form.content(id="replycontent") }}
                     {{ render_errors(form.content) }}
                     {{ form.submit() }}
                 </form>
