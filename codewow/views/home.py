@@ -40,12 +40,11 @@ def tag(tag, p=1):
 
 @home.route("/s", methods=('GET',))
 def search():
-    # TODO 
+    # TODO support other full text search
     q = request.args.get('q', "")
     p = int(request.args.get('p', 1))
     if p<1: p=1
     rqs = [e for e in re.split('\s+', q) if e]
-    print rqs
     page_obj = Gist.query.in_(Gist._tags, *rqs).\
             descending(Gist.mongo_id).\
             paginate(page=p, per_page=Gist.PERN, error_out=False)

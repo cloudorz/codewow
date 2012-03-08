@@ -20,7 +20,7 @@
                 <a href="{{ url_for('home.index') }}"> <img src="{{ config['STATIC_PATH'] }}css/img/logo.png"> </a>
 			</div>
 			<div class="searchBox">
-                <form method="GET" action="#{#{ url_for('home.search') }#}">
+                <form method="GET" action="{{ url_for('home.search') }}"
                     <span><input name="q" type="text" value="{{ q }}"></span>
                     <span><input class="btnSearch" type="submit" value="{{ _("Search") }}"></span>
 				</form>

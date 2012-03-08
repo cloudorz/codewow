@@ -227,7 +227,7 @@ class Gist(db.Document):
         if isinstance(tags, set):
             self._tags = tags
         elif isinstance(tags, basestring):
-            self._tags = set(e for e in re.split('\s+', tags) if e)
+            self._tags = set(e.lower() for e in re.split('\s+', tags) if e)
         else:
             self._tags = set()
 
