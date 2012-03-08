@@ -17,8 +17,8 @@ def stat():
     '''
     last = Stat.query.descending(Stat.mongo_id).first()
     if last:
-        gists = Gist.query.filter(Gist.mongo_id.ge_(last.mongo_id.generation_time))
-        users = User.query.filter(User.mongo_id.ge_(last.mongo_id.generation_time))
+        gists = Gist.query.filter(Gist.mongo_id.ge_(last.mongo_id))
+        users = User.query.filter(User.mongo_id.ge_(last.mongo_id))
     else:
         gists = Gist.query
         users = User.query
