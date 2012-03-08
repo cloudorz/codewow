@@ -233,6 +233,9 @@ class Gist(db.Document):
 
     tags = property(_get_tags, _set_tags)
 
+    def title(self):
+        return '-'.join(self.tags)
+
     def keywords(self):
         return ','.join(self.tags)
 
