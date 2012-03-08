@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% from "macros/_forms.html" import render_errors %}
 {% from "macros/_page.html" import paginate %}
-{% block title %}{{ gist.title() }}{% endblock %}
+{% block title %} > {{ gist.title() }}{% endblock %}
 {% block key %}{{ gist.keywords() }}{% endblock %}
 {% block desc %}{{ gist.description() }}{% endblock %}
 {% block css %}

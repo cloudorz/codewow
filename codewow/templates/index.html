@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% from "macros/_page.html" import paginate %}
+{% block title %}{% if tag %} > {{ tag }}{% endif %}{% endblock %}
 {% block content %}
 <div id="content">
     {% include "gist/_card.html" %}

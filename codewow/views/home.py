@@ -34,6 +34,7 @@ def tag(tag, p=1):
     page_url = lambda pn: url_for("home.index", p=pn)
 
     return render_template("index.html",
+            tag=tag,
             page_obj=page_obj, 
             page_url=page_url)
 
