@@ -44,9 +44,12 @@ def search():
     # TODO support other full text search
     q = request.args.get('q', "")
     p = int(request.args.get('p', 1))
-    if p<1: p=1
+
     rqs = [e.lower() for e in re.split('\s+', q) if e]
-    page_obj = Gist.query.in_(Gist._tags, *rqs).\
+    regex = re.compile(r'%s' % '|'.join(rqs), re.IGNORECASE)
+
+    if p<1: p=1
+    page_obj = Gist.query.filter({'$or': [{'content': regex}, {'desc': regex}, {'_tags': {'$in': rqs}}]}).\
             descending(Gist.mongo_id).\
             paginate(page=p, per_page=Gist.PERN, error_out=False)
     page_url = lambda pn: url_for("home.index", p=pn)

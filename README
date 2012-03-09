@@ -1,6 +1,7 @@
 codewow startup now
 
 # 安装
+mongodb
 
 pip install ...
 flask
@@ -37,7 +38,7 @@ What if the strings change? Create a new messages.pot like above and then let py
 $ pybabel update -i messages.pot -d translations
 
 TODO:
-搜索
+搜索 # done simple mongo full text search
 代码拷贝
 上传头像
 分享到SNS
