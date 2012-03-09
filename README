@@ -1,8 +1,7 @@
 codewow startup now
 
-installation
+# 安装
 
-1. 
 pip install ...
 flask
 flask-mongoalchemy
@@ -12,7 +11,10 @@ flask-openid
 flask-script
 flask-babel
 blinker
+gevent
+supervior # 运行管理
 
+# 国际化
 $vi  babel.cfg
 [python: **.py]
 [jinja2: **/templates/**.html]
@@ -33,3 +35,10 @@ $ pybabel compile -d translations
 
 What if the strings change? Create a new messages.pot like above and then let pybabel merge the changes:
 $ pybabel update -i messages.pot -d translations
+
+TODO:
+搜索
+代码拷贝
+上传头像
+分享到SNS
+下载文件接口
