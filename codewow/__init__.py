@@ -20,7 +20,7 @@ DEFAULT_MODULES = (
     ("", views.account),
     ("/gist", views.gist),
     ("/reply", views.reply),
-    ("/depoly", views.deploy),
+    ("/deploy", views.deploy),
 )
 
 # actions
