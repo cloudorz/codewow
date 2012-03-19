@@ -8,7 +8,9 @@ deploy = Module(__name__)
 
 @deploy.route("/git_update", methods=('POST',))
 def git_update():
-    subprocess.call("cd /data/web/codewow/ && git pull &&\
-            cp -a codewow/static /data/web/")
+    subprocess.call("cd /data/web/codewow/ && \
+            git pull && \
+            cp -a codewow/static /data/web/ && \
+            supervisorctl restart codewoow")
 
     return "OK"
