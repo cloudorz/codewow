@@ -11,6 +11,7 @@ def git_update():
     subprocess.call("cd /data/web/codewow/ && \
             git pull && \
             cp -a codewow/static /data/web/ && \
-            supervisorctl restart codewoow")
+            supervisorctl restart codewoow",
+            shell=True)
 
     return "OK"
