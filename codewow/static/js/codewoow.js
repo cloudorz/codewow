@@ -156,8 +156,8 @@ $(document).ready(function(){
 
         userInput.keyup(function(){
             
-            if($(this).value!=''){
-                var txt = $(this).value;
+            if(userInput.val()!=''){
+                var txt = userInput.val();
             } 
             alert(txt);
             for(var i = 0; i <len; i++){
