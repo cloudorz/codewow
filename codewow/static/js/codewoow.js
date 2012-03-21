@@ -155,10 +155,12 @@ $(document).ready(function(){
                 }
             }
         });
-
+        userInput.keydown(function(){
+            $('#dorpDown ul.searchResult li').remove();
+        })
         userInput.keyup(function(){
 
-            $('#dorpDown ul.searchResult li').remove(); 
+             
             
             if(userInput.val()!=''){
                 var txt = userInput.val().toLowerCase();
