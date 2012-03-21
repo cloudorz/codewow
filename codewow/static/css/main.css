@@ -477,7 +477,7 @@ form.shareCode>div select{
 #dorpDown{
 	width:220px;
 	position:relative;
-	border:1px solid #ccc;
+	border:1px solid #DFD8D4;
 	display:inline-block;
 } 
 #dorpDown .dorpDownFire{
@@ -489,9 +489,10 @@ form.shareCode>div select{
 	width:100%;
 	padding-left:5px;
 	font-size:14px;
+	color:#555;
 }
 #dorpDown .dorpDownFire div{
-	border-left:1px solid #ccc;
+	border-left:1px solid #DFD8D4;
 	width:28px;
 	height:32px;
 	position: absolute;
@@ -536,7 +537,7 @@ form.shareCode>div select{
 	font-size:14px;
 }
 #dorpDown .dorpDownList ul li:hover{
-	background-color:blue;
+	background-color:#A54547;
 	color:white;
 }
 
