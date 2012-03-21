@@ -170,7 +170,7 @@ $(document).ready(function(){
            $('#dorpDown ul.searchResult li').remove();
            alert(searchResult.children().length);
             for(var j = 0,b=resultArr.length; j<b;j++){
-               searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
+               $('li').text(arrOption[resultArr[j]]).appendTo(searchResult); 
             }
         });
     });
