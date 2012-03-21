@@ -144,7 +144,7 @@ $(document).ready(function(){
         });
 
         //pick value
-        $('#dorpDown ul.searchResult li').live('click',function(){
+        searchResult.children().live('click',function(){
             alert('fired');
             var txt = $(this).text();
             btnDrop.children('p').text(txt);
@@ -157,24 +157,16 @@ $(document).ready(function(){
         });
         
         userInput.keyup(function(){
-            $('#dorpDown ul.searchResult li').remove();
-alert($('#dorpDown ul.searchResult li').length);
+            searchResult.children().remove();
+
              
             if(userInput.val()!=''){
-                var txt = userInput.val().toLowerCase();
+               var txt = userInput.val().toLowerCase();
             } 
             for(var i = 0; i <len; i++){
                 if(lcArr[i].indexOf(txt) == 0){
-                   resultArr.push(i);
+                   searchResult.append('<li>'+ arrOption[i]+ '</li>');
                 }
-            }
-           
-          
-            for(var j = 0,b=resultArr.length; j<b;j++){
-                var li = $('<li></li>');
-                li.text(arrOption[resultArr[j]]);
-                li.appendTo(searchResult);
-               //searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
             }
 
         });
