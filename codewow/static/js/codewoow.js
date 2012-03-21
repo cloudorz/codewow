@@ -144,7 +144,7 @@ $(document).ready(function(){
         });
 
         //pick value
-        searchResult.children('li').bind('click',function(){
+        searchResult.children('li').live('click',function(){
             var txt = $(this).text();
             btnDrop.children('p').text(txt);
 
@@ -156,6 +156,8 @@ $(document).ready(function(){
         });
 
         userInput.keyup(function(){
+
+            searchResult.children('li').remove();
             
             if(userInput.val()!=''){
                 var txt = userInput.val().toLowerCase();
@@ -167,7 +169,7 @@ $(document).ready(function(){
                 }
             }
             
-            searchResult.children().remove();
+            
             for(var j = 0,b=resultArr.length; j<b;j++){
                searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
             }
