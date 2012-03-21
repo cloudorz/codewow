@@ -162,14 +162,12 @@ $(document).ready(function(){
             if(userInput.val()!=''){
                 var txt = userInput.val().toLowerCase();
             } 
-            alert(userInput.val());
             for(var i = 0; i <len; i++){
                 if(lcArr[i].indexOf(txt) == 0){
                    resultArr.push(i);
                 }
             }
-            
-            searchResult.innerHTML = "";
+            alert(searchResult.children().length);
             for(var j = 0,b=resultArr.length; j<b;j++){
                searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
             }
