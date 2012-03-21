@@ -129,6 +129,7 @@ $(document).ready(function(){
         var len = optionGroup.length;
         var arrOption = [];
         var lcArr = [];
+        var arrLi;
 
         var resultArr = [];
 
@@ -138,6 +139,8 @@ $(document).ready(function(){
              lcArr.push(tmp.toLowerCase());
              searchResult.append('<li>'+ tmp + '</li>');
         }
+        arrLi = searchResult.children();
+
        // alert(typeof arrOption[1]);
         btnDrop.click(function(){
             btnDrop.children('div').toggleClass('up');
@@ -155,20 +158,21 @@ $(document).ready(function(){
             }
             dorpMenu.hide();
             userInput.val('');
-            searchResult.children().remove();
+            arrLi.hide();
         });
         
         userInput.keyup(function(){
-            searchResult.children().remove();
+            arrLi.hide();
             if(userInput.val()!=''){
-               var txt = userInput.val().toLowerCase();
-            } 
-            for(var i = 0; i <len; i++){
-                if(lcArr[i].indexOf(txt) == 0){
-                   searchResult.append('<li>'+ arrOption[i]+ '</li>');
+                var txt = userInput.val().toLowerCase();
+                for(var i = 0; i <len; i++){
+                    if(lcArr[i].indexOf(txt) == 0){
+                       arrLi.eq(i).show();
+                    }
                 }
+            } else{
+                arrLi.show();
             }
-
         });
    // });
 		

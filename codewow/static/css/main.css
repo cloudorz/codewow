@@ -496,14 +496,15 @@ form.shareCode>div select{
 	position: absolute;
 	right:0;
 	top:0;
-	background:url('img/sprite.png') 13px 10px no-repeat;
+	background:url('img/sprite.png') 10px 5px no-repeat;
 	background-color:#f3f3f3;
 }
 #dorpDown div.up{
-	background-position:-15px 5px;
+	background-position:-12px 5px;
 }
 #dorpDown .dorpDownList{
 	position:absolute;
+	left:-1px;
 	background-color:white;
 	padding:5px;
 	display:none;
@@ -515,7 +516,6 @@ form.shareCode>div select{
 	margin-bottom:5px;
 }
 #dorpDown .dorpDownList .searchMenu input{
-	width:100%;
 	border:1px solid #f0f0f0;
 	padding:5px;
 	font-size:14px;
