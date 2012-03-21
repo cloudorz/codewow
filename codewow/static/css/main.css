@@ -497,11 +497,13 @@ form.shareCode>div select{
 	position: absolute;
 	right:0;
 	top:0;
-	background:url('img/sprite.png') 8px 5px no-repeat;
+	background:url('img/sprite.png') 7px 5px no-repeat;
 	background-color:#f3f3f3;
 }
 #dorpDown div.up{
 	background-position:-11px 5px;
+	background-color:white;
+	border-left:none;
 }
 #dorpDown .dorpDownList{
 	position:absolute;
@@ -520,7 +522,7 @@ form.shareCode>div select{
 	border:1px solid #f0f0f0;
 	padding:5px;
 	font-size:14px;
-	width:200px;
+	width:197px;
 }
 #dorpDown .dorpDownList ul{
 	list-style:none;
