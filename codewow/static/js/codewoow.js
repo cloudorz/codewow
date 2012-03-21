@@ -144,7 +144,7 @@ $(document).ready(function(){
         });
 
         //pick value
-        searchResult.children().live('click',function(){
+        $('li',searchResult).live('click',function(){
             alert('fired');
             var txt = $(this).text();
             btnDrop.children('p').text(txt);
