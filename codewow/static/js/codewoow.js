@@ -130,7 +130,7 @@ $(document).ready(function(){
         var arrOption = [];
 
         var resultArr = [];
-
+        alert(len);
 
         for(var i = 0,len = optionGroup.length;i<len;i++){
              var tmp = optionGroup.eq(i).text().toString();
