@@ -145,7 +145,7 @@ $(document).ready(function(){
         btnDrop.click(function(){
             btnDrop.children('div').toggleClass('up');
             dorpMenu.toggle();
-            if(userInput.val()!=''){
+            if(userInput.val() ==''){
                 arrLi.show();
             }
         });
