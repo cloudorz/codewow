@@ -128,14 +128,16 @@ $(document).ready(function(){
         var optionGroup = $('#code_type option');
         var len = optionGroup.length;
         var arrOption = [];
+        var lcArr = [];
 
         var resultArr = [];
 
         for(var i = 0;i<len;i++){
-             var tmp = optionGroup.eq(i).text().toString();
+             var tmp = optionGroup.eq(i).text().toLowerCase();
              arrOption.push(tmp);
             // searchResult.append('<li>'+ tmp + '</li>');
         }
+        lcArr = arrOption.slice(0);
        // alert(typeof arrOption[1]);
         btnDrop.click(function(){
             dorpMenu.toggle();
@@ -156,15 +158,16 @@ $(document).ready(function(){
         userInput.keyup(function(){
             
             if(userInput.val()!=''){
-                var txt = userInput.val();
+                var txt = userInput.val().toLowerCase();
             } 
             
             for(var i = 0; i <len; i++){
-                if(arrOption[i].indexOf(txt) == 0){
+                if(lcArr[i].indexOf(txt) == 0){
                    resultArr.push(i);
                 }
             }
-            alert(txt+'/'+arrOption.length+'/'+resultArr.length+'/'+len);
+            
+            searchResult.children().remove();
             for(var j = 0,b=resultArr.length; j<len;j++){
                searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
             }
