@@ -133,11 +133,11 @@ $(document).ready(function(){
 
 
         for(var i = 0,len = optionGroup.length;i<len;i++){
-             var tmp = optionGroup.eq(i).text();
+             var tmp = optionGroup.eq(i).text().toString();
              arrOption.push(tmp);
             // searchResult.append('<li>'+ tmp + '</li>');
         }
-
+        alert(typeof arrOption[1]);
         btnDrop.click(function(){
             dorpMenu.toggle();
         });
@@ -157,7 +157,7 @@ $(document).ready(function(){
         userInput.keyup(function(){
             
             if(userInput.val()!=''){
-                var txt = userInput.val();
+                var txt = userInput.val().toString();
             } 
             
             for(var i = 0; i <len; i++){
