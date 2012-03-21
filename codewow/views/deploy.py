@@ -10,8 +10,7 @@ deploy = Module(__name__)
 def git_update():
     subprocess.call("cd /data/web/codewow/ && \
             git pull && \
-            cp -a codewow/static /data/web/ && \
-            supervisorctl restart codewoow",
+            cp -a codewow/static /data/web/",
             shell=True)
 
     return "OK"
