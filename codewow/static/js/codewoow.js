@@ -155,7 +155,7 @@ $(document).ready(function(){
         });
 
         input.keyup(function(){
-            /*
+            
             if(input.value!=''){
                 var txt = input.value;
             } 
@@ -167,8 +167,7 @@ $(document).ready(function(){
             for(var j = 0,len=resultArr.length; j<len;j++){
                searchResult.append('<li>'+ resultArr[j] + '</li>'); 
             }
-            */
-            alert('fired');
+            alert('success');
         });
     });
 		
