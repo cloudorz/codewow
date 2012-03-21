@@ -167,10 +167,13 @@ $(document).ready(function(){
                    resultArr.push(i);
                 }
             }
-           $('#dorpDown ul.searchResult li').remove();
+           
            alert(searchResult.children().length);
             for(var j = 0,b=resultArr.length; j<b;j++){
-               searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
+                var li = $('li');
+                li.text(arrOption[resultArr[j]]);
+                li.appendTo(searchResult);
+               //searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
             }
         });
     });
