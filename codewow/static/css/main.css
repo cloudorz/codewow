@@ -472,7 +472,23 @@ form.shareCode .codeSubmit:hover{
 }
 /*realtime search*/
 form.shareCode>div select{
-	display:hidden;
+	display:none;
+}
+#dorpDownWrapper{
+	width:250px;
+	position:relative;
+} 
+#dorpDownWrapper .dorpDownFire{
+	height:32px;
+	line-height:32px;
+	position:relative;
+}
+#dorpDownWrapper .dorpDownFire div{
+	border-left:1px solid #ccc;
+	width:32px;
+	
+	background:url('img/sprite.png') 5px 5px no-repeat;
+	background-color:#f3f3f3;
 }
 
 .me>a{
