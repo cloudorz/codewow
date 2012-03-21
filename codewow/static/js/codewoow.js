@@ -123,7 +123,7 @@ $(document).ready(function(){
         var btnDrop = $('#dorpDown .dorpDownFire');
         var dorpMenu = $('#dorpDown .dorpDownList');
         var userInput = $('#dorpDown .searchMenu input');
-        var searchResult = $('#dorpDown .dorpDownList .searchResult');
+        var searchResult = $('#dorpDown .searchResult');
 
         var optionGroup = $('#code_type option');
         var len = optionGroup.length;
