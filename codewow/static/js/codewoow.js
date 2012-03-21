@@ -119,7 +119,7 @@ $(document).ready(function(){
 
 // share code select
 
-    $(function(){
+   // $(function(){
         var btnDrop = $('#dorpDown .dorpDownFire');
         var dorpMenu = $('#dorpDown .dorpDownList');
         var userInput = $('#dorpDown .searchMenu input');
@@ -158,8 +158,6 @@ $(document).ready(function(){
         
         userInput.keyup(function(){
             searchResult.children().remove();
-
-             
             if(userInput.val()!=''){
                var txt = userInput.val().toLowerCase();
             } 
@@ -170,6 +168,6 @@ $(document).ready(function(){
             }
 
         });
-    });
+   // });
 		
 })
