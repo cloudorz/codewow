@@ -144,16 +144,16 @@ $(document).ready(function(){
         });
 
         //pick value
-        $('li',searchResult).live('click',function(){
-            alert('fired');
+        $('li',searchResult).live('click',function(){  
             var txt = $(this).text();
             btnDrop.children('p').text(txt);
-
             for(var i =0;i<len;i++){
                 if(arrOption[i] == txt){
                     optionGroup.eq(i).attr('selected',true);
                 }
             }
+            userInput.val('');
+            searchResult.children().remove();
         });
         
         userInput.keyup(function(){

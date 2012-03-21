@@ -515,6 +515,7 @@ form.shareCode>div select{
 	overflow-y:auto;
 }
 #dorpDown .dorpDownList ul li{
+	display:none;
 	padding:6px 5px;
 	color:#888;
 }
