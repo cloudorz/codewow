@@ -471,7 +471,7 @@ form.shareCode .codeSubmit:hover{
 	cursor:pointer;
 }
 /*realtime search*/
-form.shareCode>div:first-child select{
+form.shareCode>div select{
 	display:hidden;
 }
 
