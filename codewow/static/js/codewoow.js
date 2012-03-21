@@ -168,9 +168,9 @@ $(document).ready(function(){
                 }
             }
            
-          // $('#dorpDown ul.searchResult li').remove();
+          $('#dorpDown ul.searchResult li').remove();
             for(var j = 0,b=resultArr.length; j<b;j++){
-                var li = $('li');
+                var li = $('<li></li>');
                 li.text(arrOption[resultArr[j]]);
                 li.appendTo(searchResult);
                //searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
