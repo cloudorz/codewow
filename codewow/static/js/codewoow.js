@@ -159,14 +159,15 @@ $(document).ready(function(){
             if(userInput.val()!=''){
                 var txt = userInput.val();
             } 
-            alert(txt+'/'+arrOption.length);
+            
             for(var i = 0; i <len; i++){
                 if(arrOption[i].indexOf(txt) == 0){
-                   resultArr.push(txt);
+                   resultArr.push(i);
                 }
             }
+            alert(txt+'/'+arrOption.length+'/'+resultArr.length);
             for(var j = 0,len=resultArr.length; j<len;j++){
-               searchResult.append('<li>'+ resultArr[j] + '</li>'); 
+               searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
             }
         });
     });
