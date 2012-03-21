@@ -514,6 +514,7 @@ form.shareCode>div select{
 	font-size:14px;
 }
 #dorpDown .dorpDownList ul{
+	list-style: none;
 	max-height:190px;
 	overflow-x:hidden;
 	overflow-y:auto;
