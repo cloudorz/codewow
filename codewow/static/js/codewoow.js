@@ -157,6 +157,7 @@ $(document).ready(function(){
         });
         
         userInput.keyup(function(){
+            $('#dorpDown ul.searchResult li').remove();
 alert($('#dorpDown ul.searchResult li').length);
              
             if(userInput.val()!=''){
@@ -175,7 +176,7 @@ alert($('#dorpDown ul.searchResult li').length);
                 li.appendTo(searchResult);
                //searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
             }
-            
+
         });
     });
 		
