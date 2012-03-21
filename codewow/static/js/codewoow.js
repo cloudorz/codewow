@@ -159,6 +159,7 @@ $(document).ready(function(){
                     optionGroup.eq(i).attr('selected',true);
                 }
             }
+            btnDrop.children('div').toggleClass('up');
             dorpMenu.hide();
             userInput.val('');
             arrLi.hide();

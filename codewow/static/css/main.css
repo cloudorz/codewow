@@ -473,6 +473,12 @@ form.shareCode .codeSubmit:hover{
 form.shareCode>div select{
 	display:none;
 }
+form.shareCode ul.errors{
+	list-style:none;
+	font-size:12px;
+	padding-top:5px; 
+	color:#A54547;
+}
 
 #dorpDown{
 	width:220px;
