@@ -159,6 +159,7 @@ $(document).ready(function(){
             if(input.value!=''){
                 var txt = input.value;
             } 
+            alert(input.value);
             for(var i = 0; i <len; i++){
                 if(arrOption[i].indexOf(txt) == 0){
                    resultArr.push(txt);
