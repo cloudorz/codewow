@@ -157,7 +157,7 @@ $(document).ready(function(){
 
         userInput.keyup(function(){
 
-            searchResult.children('li').remove();
+            searchResult.html(); 
             
             if(userInput.val()!=''){
                 var txt = userInput.val().toLowerCase();
