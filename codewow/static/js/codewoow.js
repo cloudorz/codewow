@@ -133,11 +133,11 @@ $(document).ready(function(){
         var resultArr = [];
 
         for(var i = 0;i<len;i++){
-             var tmp = optionGroup.eq(i).text().toLowerCase();
+             var tmp = optionGroup.eq(i).text();
              arrOption.push(tmp);
+             lcArr.push(tmp.toLowerCase());
             // searchResult.append('<li>'+ tmp + '</li>');
         }
-        lcArr = arrOption.slice(0);
        // alert(typeof arrOption[1]);
         btnDrop.click(function(){
             dorpMenu.toggle();
@@ -168,7 +168,7 @@ $(document).ready(function(){
             }
             
             searchResult.children().remove();
-            for(var j = 0,b=resultArr.length; j<len;j++){
+            for(var j = 0,b=resultArr.length; j<b;j++){
                searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
             }
         });
