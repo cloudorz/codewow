@@ -4,7 +4,6 @@ table { border-collapse:collapse; border-spacing:0; }
 fieldset,img { border:0; }
 address,caption,cite,code,dfn,em,strong,th,var
 { font-style:normal; font-weight:normal; }
-ol,ul { margin:1em 0; margin-left:40px; padding-left:0; }
 ul { list-style-type:disc; }
 ol { list-style-type:decimal; }
 caption,th { text-align:left; }
@@ -476,7 +475,7 @@ form.shareCode>div select{
 }
 
 #dorpDown{
-	width:250px;
+	width:220px;
 	position:relative;
 	border:1px solid #ccc;
 	display:inline-block;
@@ -487,7 +486,7 @@ form.shareCode>div select{
 	position:relative;
 }
 #dorpDown .dorpDownFire p{
-	width:200px;
+	width:100%;
 	padding-left:5px;
 }
 #dorpDown .dorpDownFire div{
@@ -514,7 +513,7 @@ form.shareCode>div select{
 	font-size:14px;
 }
 #dorpDown .dorpDownList ul{
-	list-style: none;
+	list-style:none;
 	max-height:190px;
 	overflow-x:hidden;
 	overflow-y:auto;
