@@ -143,7 +143,7 @@ $(document).ready(function(){
         });
 
         input.keypress(function(e){
-            if(input.value!=''){
+            /*if(input.value!=''){
                 var txt = input.value;
             } 
             for(var i = 0; i <len; i++){
@@ -153,7 +153,8 @@ $(document).ready(function(){
             }
             for(var j = 0,len=resultArr.length; j<len;j++){
                searchResult.append('<li>'+ resultArr[j] + '</li>'); 
-            }
+            }*/
+            alert('fired')
         })
     });
 		
