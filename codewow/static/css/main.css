@@ -496,15 +496,23 @@ form.shareCode>div select{
 	position: absolute;
 	right:0;
 	top:0;
-	background:url('img/sprite.png') 5px 5px no-repeat;
+	background:url('img/sprite.png') no-repeat;
 	background-color:#f3f3f3;
+}
+#dorpDown div.down{
+	background-position:10px 5px;
+}
+#dorpDown div.up{
+	background-position:15px 5px;
 }
 #dorpDown .dorpDownList{
 	position:absolute;
 	background-color:white;
 	padding:5px;
 	display:none;
-	width:220px;
+	width:210px;
+	border:1px solid #ccc;
+	border-top:none;
 }
 #dorpDown .dorpDownList .searchMenu{
 	margin-bottom:5px;
@@ -524,6 +532,7 @@ form.shareCode>div select{
 #dorpDown .dorpDownList ul li{
 	padding:6px 5px;
 	color:#888;
+	font-size:14px;
 }
 #dorpDown .dorpDownList ul li:hover{
 	background-color:blue;

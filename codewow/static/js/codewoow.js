@@ -140,6 +140,7 @@ $(document).ready(function(){
         }
        // alert(typeof arrOption[1]);
         btnDrop.click(function(){
+            btnDrop.children('div').toggleClass('up');
             dorpMenu.toggle();
         });
 
