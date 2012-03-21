@@ -122,7 +122,7 @@ $(document).ready(function(){
     $(function(){
         var btnDrop = $('#dorpDown .dorpDownFire');
         var dorpMenu = $('#dorpDown .dorpDownList');
-        var input = $('#dorpDown .searchMenu input');
+        var userInput = $('#dorpDown .searchMenu input');
         var searchResult = $('#dorpDown .dorpDownList .searchResult');
 
         var optionGroup = $('#code_type option');
@@ -154,12 +154,12 @@ $(document).ready(function(){
             }
         });
 
-        input.keyup(function(){
+        userInput.keyup(function(){
             
-            if(input.value!=''){
-                var txt = input.value;
+            if($(this).value!=''){
+                var txt = $(this).value;
             } 
-            alert(input.value);
+            alert(txt);
             for(var i = 0; i <len; i++){
                 if(arrOption[i].indexOf(txt) == 0){
                    resultArr.push(txt);
