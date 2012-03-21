@@ -144,7 +144,7 @@ $(document).ready(function(){
         });
 
         //pick value
-        searchResult.children().live('click',function(){
+        $('#dorpDown ul.searchResult li').live('click',function(){
             alert('fired');
             var txt = $(this).text();
             btnDrop.children('p').text(txt);
@@ -158,7 +158,7 @@ $(document).ready(function(){
 
         userInput.keyup(function(){
 
-            searchResult.children().remove(); 
+            $('#dorpDown ul.searchResult li').remove(); 
             
             if(userInput.val()!=''){
                 var txt = userInput.val().toLowerCase();
