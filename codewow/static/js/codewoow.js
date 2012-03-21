@@ -168,7 +168,7 @@ $(document).ready(function(){
                 }
             }
            
-           alert(searchResult.children().length);
+           $('#dorpDown ul.searchResult li').remove();
             for(var j = 0,b=resultArr.length; j<b;j++){
                 var li = $('li');
                 li.text(arrOption[resultArr[j]]);
