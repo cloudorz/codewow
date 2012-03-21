@@ -152,7 +152,7 @@ $(document).ready(function(){
                     optionGroup.eq(i).attr('selected',true);
                 }
             }
-            userInput.val() = '';
+            userInput.val('');
             searchResult.children().remove();
         });
         
