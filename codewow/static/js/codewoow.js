@@ -155,13 +155,10 @@ $(document).ready(function(){
                 }
             }
         });
-        userInput.keydown(function(){
-            $('#dorpDown ul.searchResult').html();
-        })
+        
         userInput.keyup(function(){
 
              
-            
             if(userInput.val()!=''){
                 var txt = userInput.val().toLowerCase();
             } 
@@ -172,7 +169,7 @@ $(document).ready(function(){
                 }
             }
             
-            
+            searchResult.innerHTML = "";
             for(var j = 0,b=resultArr.length; j<b;j++){
                searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
             }
