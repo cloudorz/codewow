@@ -128,7 +128,7 @@ $(document).ready(function(){
         var optionGroup = $('#code_type option');
         var arrOption = [];
         if(optionGroup.length){
-            for(var i =0;len = optionGroup.length;i<len;i++){
+            for(var i = 0,len = optionGroup.length;i<len;i++){
                  var tmp = optionGroup.eq(i).text();
                  arrOption.push(tmp);
                  searchResult.append('<li>'+ tmp + '</li>');
