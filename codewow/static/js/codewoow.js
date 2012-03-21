@@ -121,22 +121,40 @@ $(document).ready(function(){
 
     $(function(){
         var btnDrop = $('#dorpDown .dorpDownFire');
-        var dorpMenu = $('#dorpDown .searchMenu');
-
+        var dorpMenu = $('#dorpDown .dorpDownList');
+        var input = dorpMenu.children('input');
         var searchResult = $('#dorpDown .dorpDownList .searchResult');
 
         var optionGroup = $('#code_type option');
+        var len = optionGroup.length;
         var arrOption = [];
-        if(optionGroup.length){
-            for(var i = 0,len = optionGroup.length;i<len;i++){
-                 var tmp = optionGroup.eq(i).text();
-                 arrOption.push(tmp);
-                 searchResult.append('<li>'+ tmp + '</li>');
-            }
+
+        var resultArr = [];
+
+
+        for(var i = 0,len = optionGroup.length;i<len;i++){
+             var tmp = optionGroup.eq(i).text();
+             arrOption.push(tmp);
+            // searchResult.append('<li>'+ tmp + '</li>');
         }
+
         btnDrop.click(function(){
             dorpMenu.toggle();
         });
+
+        input.keypress(function(e){
+            if(input.value!=''){
+                var txt = input.value;
+            } 
+            for(var i = 0; i <len; i++){
+                if(arrOption[i].indexOf(txt) == 0){
+                   resultArr.push(txt);
+                }
+            }
+            for(var j = 0,len=resultArr.length; j<len;j++){
+               searchResult.append('<li>'+ resultArr[j] + '</li>'); 
+            }
+        })
     });
 		
 })
