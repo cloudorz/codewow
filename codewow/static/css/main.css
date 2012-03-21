@@ -492,16 +492,16 @@ form.shareCode>div select{
 }
 #dorpDown .dorpDownFire div{
 	border-left:1px solid #ccc;
-	width:32px;
+	width:28px;
 	height:32px;
 	position: absolute;
 	right:0;
 	top:0;
-	background:url('img/sprite.png') 7px 5px no-repeat;
+	background:url('img/sprite.png') 3px 5px no-repeat;
 	background-color:#f3f3f3;
 }
 #dorpDown div.up{
-	background-position:-11px 5px;
+	background-position:-7px 5px;
 	background-color:white;
 	border-left:none;
 }
