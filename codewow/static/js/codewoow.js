@@ -130,9 +130,8 @@ $(document).ready(function(){
         var arrOption = [];
 
         var resultArr = [];
-        alert(len);
 
-        for(var i = 0,len = optionGroup.length;i<len;i++){
+        for(var i = 0;i<len;i++){
              var tmp = optionGroup.eq(i).text().toString();
              arrOption.push(tmp);
             // searchResult.append('<li>'+ tmp + '</li>');
@@ -166,7 +165,7 @@ $(document).ready(function(){
                 }
             }
             alert(txt+'/'+arrOption.length+'/'+resultArr.length+'/'+len);
-            for(var j = 0,len=resultArr.length; j<len;j++){
+            for(var j = 0,b=resultArr.length; j<len;j++){
                searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
             }
         });
