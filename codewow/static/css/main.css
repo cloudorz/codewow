@@ -518,6 +518,10 @@ form.shareCode>div select{
 	padding:6px 5px;
 	color:#888;
 }
+#dorpDown .dorpDownList ul li:hover{
+	background-color:blue;
+	color:white;
+}
 
 .me>a{
 	display:block;

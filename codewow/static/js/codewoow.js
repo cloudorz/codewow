@@ -142,8 +142,20 @@ $(document).ready(function(){
             dorpMenu.toggle();
         });
 
+        //pick value
+        searchResult.children('li').bind('click',function(){
+            var txt = $(this).text();
+            btnDrop.children('p').text(txt);
+
+            for(var i =0;i<len;i++){
+                if(arrOption[i] == txt){
+                    optionGroup.eq(i).attr('selected',true);
+                }
+            }
+        })
+
         input.keyup(function(e){
-            /*if(input.value!=''){
+            if(input.value!=''){
                 var txt = input.value;
             } 
             for(var i = 0; i <len; i++){
@@ -153,8 +165,7 @@ $(document).ready(function(){
             }
             for(var j = 0,len=resultArr.length; j<len;j++){
                searchResult.append('<li>'+ resultArr[j] + '</li>'); 
-            }*/
-            alert('fired');
+            }
         })
     });
 		
