@@ -501,13 +501,16 @@ form.shareCode>div select{
 }
 #dorpDown .dorpDownList{
 	position:absolute;
+	background-color:white;
 	padding:5px;
 	display:none;
+	width:220px;
 }
 #dorpDown .dorpDownList .searchMenu{
 	margin-bottom:5px;
 }
 #dorpDown .dorpDownList .searchMenu input{
+	width:100%;
 	border:1px solid #f0f0f0;
 	padding:5px;
 	font-size:14px;
