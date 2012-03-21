@@ -119,5 +119,24 @@ $(document).ready(function(){
 
 // share code select
 
+    $(function(){
+        var btnDrop = $('#dorpDown .dorpDownFire');
+        var dorpMenu = $('#dorpDown .searchMenu');
+
+        var searchResult = $('#dorpDown .dorpDownList .searchResult');
+
+        var optionGroup = $('#code_type option');
+        var arrOption = [];
+        if(optionGroup.length){
+            for(var i =0;len = optionGroup.length;i<len;i++){
+                 var tmp = optionGroup.eq(i).text();
+                 arrOption.push(tmp);
+                 searchResult.append('<li>'+ tmp + '</li>');
+            }
+        }
+        btnDrop.click(function(){
+            dorpMenu.toggle();
+        });
+    });
 		
 })

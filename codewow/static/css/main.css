@@ -485,7 +485,7 @@ form.shareCode>div select{
 	position:relative;
 }
 #dorpDown .dorpDownFire p{
-	width:220px;
+	width:200px;
 	padding-left:5px;
 }
 #dorpDown .dorpDownFire div{
@@ -515,8 +515,8 @@ form.shareCode>div select{
 	overflow-y:auto;
 }
 #dorpDown .dorpDownList ul li{
-	padding:7px 8px 7px 5px;
-	color:#444;
+	padding:6px 5px;
+	color:#888;
 }
 
 .me>a{
