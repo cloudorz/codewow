@@ -157,7 +157,7 @@ $(document).ready(function(){
         });
         
         userInput.keyup(function(){
-
+alert($('#dorpDown ul.searchResult li').length);
              
             if(userInput.val()!=''){
                 var txt = userInput.val().toLowerCase();
@@ -175,7 +175,7 @@ $(document).ready(function(){
                 li.appendTo(searchResult);
                //searchResult.append('<li>'+ arrOption[resultArr[j]]+ '</li>'); 
             }
-            alert($('#dorpDown ul.searchResult li').length);
+            
         });
     });
 		
