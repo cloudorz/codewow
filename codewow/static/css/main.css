@@ -470,6 +470,10 @@ form.shareCode .codeSubmit:hover{
 	background-color:#923436;
 	cursor:pointer;
 }
+/*realtime search*/
+form.shareCode>div select{
+	display:hidden;
+}
 
 .me>a{
 	display:block;

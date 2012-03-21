@@ -116,5 +116,8 @@ $(document).ready(function(){
  
          setTimeout(disappear, 1300);
      });
+
+// share code select
+
 		
 })
