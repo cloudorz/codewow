@@ -474,10 +474,12 @@ form.shareCode .codeSubmit:hover{
 form.shareCode>div select{
 	display:none;
 }
+
 #dorpDown{
 	width:250px;
 	position:relative;
 	border:1px solid #ccc;
+	display:inline-block;
 } 
 #dorpDown .dorpDownFire{
 	height:32px;
@@ -499,7 +501,9 @@ form.shareCode>div select{
 	background-color:#f3f3f3;
 }
 #dorpDown .dorpDownList{
+	position:absolute;
 	padding:5px;
+	display:none;
 }
 #dorpDown .dorpDownList .searchMenu{
 	margin-bottom:5px;

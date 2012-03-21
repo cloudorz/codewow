@@ -136,7 +136,7 @@ $(document).ready(function(){
              var tmp = optionGroup.eq(i).text();
              arrOption.push(tmp);
              lcArr.push(tmp.toLowerCase());
-            // searchResult.append('<li>'+ tmp + '</li>');
+             searchResult.append('<li>'+ tmp + '</li>');
         }
        // alert(typeof arrOption[1]);
         btnDrop.click(function(){
@@ -152,6 +152,7 @@ $(document).ready(function(){
                     optionGroup.eq(i).attr('selected',true);
                 }
             }
+            dorpMenu.hide();
             userInput.val('');
             searchResult.children().remove();
         });
