@@ -144,7 +144,8 @@ $(document).ready(function(){
         });
 
         //pick value
-        searchResult.children('li').live('click',function(){
+        searchResult.children().live('click',function(){
+            alert('fired');
             var txt = $(this).text();
             btnDrop.children('p').text(txt);
 
@@ -157,12 +158,12 @@ $(document).ready(function(){
 
         userInput.keyup(function(){
 
-            searchResult.html(); 
+            searchResult.children().remove(); 
             
             if(userInput.val()!=''){
                 var txt = userInput.val().toLowerCase();
             } 
-            
+            alert(userInput.val());
             for(var i = 0; i <len; i++){
                 if(lcArr[i].indexOf(txt) == 0){
                    resultArr.push(i);
