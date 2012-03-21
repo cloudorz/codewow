@@ -156,7 +156,7 @@ $(document).ready(function(){
             }
         });
         userInput.keydown(function(){
-            $('#dorpDown ul.searchResult li').remove();
+            $('#dorpDown ul.searchResult').html();
         })
         userInput.keyup(function(){
 
