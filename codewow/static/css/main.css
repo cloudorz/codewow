@@ -474,21 +474,48 @@ form.shareCode .codeSubmit:hover{
 form.shareCode>div select{
 	display:none;
 }
-#dorpDownWrapper{
+#dorpDown{
 	width:250px;
 	position:relative;
+	border:1px solid #ccc;
 } 
-#dorpDownWrapper .dorpDownFire{
+#dorpDown .dorpDownFire{
 	height:32px;
 	line-height:32px;
 	position:relative;
 }
-#dorpDownWrapper .dorpDownFire div{
+#dorpDown .dorpDownFire p{
+	width:220px;
+	padding-left:5px;
+}
+#dorpDown .dorpDownFire div{
 	border-left:1px solid #ccc;
 	width:32px;
-	
+	height:32px;
+	position: absolute;
+	right:0;
+	top:0;
 	background:url('img/sprite.png') 5px 5px no-repeat;
 	background-color:#f3f3f3;
+}
+#dorpDown .dorpDownList{
+	padding:5px;
+}
+#dorpDown .dorpDownList .searchMenu{
+	margin-bottom:5px;
+}
+#dorpDown .dorpDownList .searchMenu input{
+	border:1px solid #f0f0f0;
+	padding:5px;
+	font-size:14px;
+}
+#dorpDown .dorpDownList ul{
+	max-height:190px;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+#dorpDown .dorpDownList ul li{
+	padding:7px 8px 7px 5px;
 }
 
 .me>a{
