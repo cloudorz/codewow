@@ -152,7 +152,7 @@ $(document).ready(function(){
                     optionGroup.eq(i).attr('selected',true);
                 }
             }
-        })
+        });
 
         input.keyup(function(){
             /*
@@ -169,7 +169,7 @@ $(document).ready(function(){
             }
             */
             alert('fired');
-        })
+        });
     });
 		
 })
